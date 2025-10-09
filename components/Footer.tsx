@@ -19,7 +19,7 @@ export default function Footer() {
         <div>
           <h3 className="text-2xl font-semibold text-white mb-2">Ehsan Yaqoob</h3>
           <p className="text-sm">
-            Flutter & Mobile App Developer | Android & iOS | UI/UX Focused
+          App Developer | Android & iOS | UI/UX Focused
           </p>
         </div>
 

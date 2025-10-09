@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 
 const roles = [
   "Flutter Developer",
-  "UI/UX Designer",
-  "Mobile App Developer",
-  "Cross-Platform Expert",
+  "Android & iOS Engineer",
+  "Cross-Platform App Specialist",
+  "UI/UX-Focused Mobile Developer",
 ];
 
 export default function Hero() {
@@ -19,25 +19,22 @@ export default function Hero() {
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          if (displayText.length < currentRole.length) {
-            setDisplayText(currentRole.slice(0, displayText.length + 1));
-          } else {
-            setTimeout(() => setIsDeleting(true), 2000);
-          }
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentRole.length) {
+          setDisplayText(currentRole.slice(0, displayText.length + 1));
         } else {
-          if (displayText.length > 0) {
-            setDisplayText(displayText.slice(0, -1));
-          } else {
-            setIsDeleting(false);
-            setRoleIndex((prev) => (prev + 1) % roles.length);
-          }
+          setTimeout(() => setIsDeleting(true), 2000);
         }
-      },
-      isDeleting ? 50 : 100
-    );
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1));
+        } else {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, isDeleting ? 50 : 100);
 
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
@@ -80,9 +77,10 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              Specializing in beautiful, responsive, and user-centric mobile and
-              web applications. Let's bring your ideas to life with elegant
-              code and stunning design.
+              Building high-performance mobile apps with Flutter for Android and
+              iOS. Experienced in scalable architectures, clean UI design, and
+              smooth cross-platform performance. Focused on delivering production-ready
+              solutions with intuitive user experiences.
             </motion.p>
 
             <motion.div
@@ -143,7 +141,12 @@ export default function Hero() {
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+        transition={{
+          delay: 1.5,
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
       >
         <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
           <motion.div

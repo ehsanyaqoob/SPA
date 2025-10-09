@@ -1,38 +1,39 @@
 "use client";
 
+import React from "react";
 import { skills, skillCategories } from "@/data/skills";
 
-export default function SkillsSection() {
-  const grouped = Object.entries(
-    skills.reduce((acc, skill) => {
-      (acc[skill.category] = acc[skill.category] || []).push(skill.name);
-      return acc;
-    }, {} as Record<string, string[]>)
-  );
+const SkillsSection = () => {
+  const grouped = Object.entries(skillCategories).map(([key, label]) => ({
+    label,
+    items: skills.filter((s) => s.category === key),
+  }));
 
   return (
-    <section className="py-16 px-4 md:px-8 max-w-5xl mx-auto">
-      <h2 className="text-sm uppercase tracking-widest text-cyan-500 mb-8">
-        02.{" "}
-        <span className="ml-2 text-white font-semibold">
-          Where I’ve excelled
-        </span>
+    <section className="max-w-4xl mx-auto py-20 px-4">
+      <h2 className="text-3xl font-semibold tracking-tight text-center mb-10">
+        Skills
       </h2>
 
-      <div className="space-y-6">
-        {grouped.map(([category, names]) => (
-          <div key={category}>
-            <h3 className="flex items-center gap-2 text-gray-200 font-semibold text-base">
-              <span className="text-cyan-400">▹</span>
-              {skillCategories[category as keyof typeof skillCategories]}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-12 gap-x-16">
+        {grouped.map(({ label, items }) => (
+          <div key={label}>
+            <h3 className="text-lg font-medium text-gray-800 dark:text-gray-200 mb-3">
+              {label}
             </h3>
-
-            <p className="text-gray-400 mt-2 text-sm leading-relaxed">
-              {names.join(", ")}
-            </p>
+            <ul className="space-y-1 text-gray-600 dark:text-gray-400">
+              {items.map((skill) => (
+                <li key={skill.name} className="flex items-center">
+                  <span className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full mr-3" />
+                  {skill.name}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
     </section>
   );
-}
+};
+
+export default SkillsSection;

@@ -1,31 +1,41 @@
 export interface Skill {
   name: string;
-  icon: string;
-  category: 'frontend' | 'backend' | 'tools' | 'design';
+  category: "mobile" | "state" | "backend" | "tools" | "design";
 }
 
 export const skills: Skill[] = [
-  { name: "Flutter", icon: "Smartphone", category: "frontend" },
-  { name: "Dart", icon: "Code", category: "frontend" },
-  { name: "React", icon: "Atom", category: "frontend" },
-  { name: "TypeScript", icon: "FileCode", category: "frontend" },
-  { name: "JavaScript", icon: "FileJson", category: "frontend" },
-  { name: "Next.js", icon: "Layout", category: "frontend" },
-  { name: "Tailwind CSS", icon: "Palette", category: "frontend" },
-  { name: "Firebase", icon: "Flame", category: "backend" },
-  { name: "REST API", icon: "Globe", category: "backend" },
-  { name: "Node.js", icon: "Server", category: "backend" },
-  { name: "GraphQL", icon: "Database", category: "backend" },
-  { name: "Git", icon: "GitBranch", category: "tools" },
-  { name: "GitHub", icon: "Github", category: "tools" },
-  { name: "VS Code", icon: "Code2", category: "tools" },
-  { name: "Figma", icon: "Figma", category: "design" },
-  { name: "Adobe XD", icon: "Pen", category: "design" }, 
+  // 💙 Mobile Development
+  { name: "Flutter", category: "mobile" },
+  { name: "Dart", category: "mobile" },
+  { name: "Kotlin", category: "mobile" },
+  { name: "Swift", category: "mobile" },
+  { name: "React Native", category: "mobile" },
+
+  // ⚡ State Management
+  { name: "GetX", category: "state" },
+  { name: "Provider", category: "state" },
+  { name: "Bloc", category: "state" },
+  { name: "Riverpod", category: "state" },
+
+  // 🔥 Backend & APIs
+  { name: "Firebase", category: "backend" },
+  { name: "REST API", category: "backend" },
+  { name: "Supabase", category: "backend" },
+
+  // 🧰 Tools
+  { name: "Git", category: "tools" },
+  { name: "GitHub", category: "tools" },
+  { name: "VS Code", category: "tools" },
+
+  // 🎨 Design
+  { name: "Figma", category: "design" },
+  { name: "Adobe XD", category: "design" },
 ];
 
 export const skillCategories = {
-  frontend: "Frontend Development",
-  backend: "Backend & APIs",
-  tools: "Tools & Version Control",
-  design: "UI/UX Design",
+  mobile: "💙 Mobile Development",
+  state: "⚡ State Management",
+  backend: "🔥 Backend & APIs",
+  tools: "🧰 Tools",
+  design: "🎨 Design",
 };

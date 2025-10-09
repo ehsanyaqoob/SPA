@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Ehsan Yaqoob - Flutter Developer & UI/UX Designer',
   description: 'Portfolio of Ehsan Yaqoob, a Flutter Developer and UI/UX Designer specializing in beautiful, responsive, and user-centric mobile and web applications.',
-  keywords: ['Flutter Developer', 'UI/UX Designer', 'Mobile App Developer', 'Web Developer', 'Ehsan Yaqoob'],
+  keywords: ['Flutter Developer', 'UI/UX Designer', 'Mobile App Developer', 'IOS Developer', 'Ehsan Yaqoob'],
   authors: [{ name: 'Ehsan Yaqoob' }],
   creator: 'Ehsan Yaqoob',
   openGraph: {

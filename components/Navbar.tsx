@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+  { id: "01", name: "Home", href: "#home" },
+  { id: "02", name: "About", href: "#about" },
+  { id: "03", name: "Projects", href: "#projects" },
+  { id: "04", name: "Experience", href: "#experience" },
+  { id: "05", name: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -20,17 +20,8 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const { scrollY } = useScroll();
 
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.95)"]
-  );
-
-  const backgroundColorDark = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(17, 24, 39, 0)", "rgba(17, 24, 39, 0.95)"]
-  );
+  const bgLight = useTransform(scrollY, [0, 100], ["rgba(255,255,255,0)", "rgba(255,255,255,0.95)"]);
+  const bgDark = useTransform(scrollY, [0, 100], ["rgba(17,24,39,0)", "rgba(17,24,39,0.95)"]);
 
   useEffect(() => {
     setMounted(true);
@@ -38,16 +29,14 @@ export default function Navbar() {
     const handleScroll = () => {
       const sections = navItems.map((item) => item.href.substring(1));
       const current = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
           return rect.top <= 100 && rect.bottom >= 100;
         }
         return false;
       });
-      if (current) {
-        setActiveSection(current);
-      }
+      if (current) setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,39 +45,35 @@ export default function Navbar() {
 
   const handleClick = (href: string) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   return (
     <>
       <motion.nav
-        style={{
-          backgroundColor: theme === "dark" ? backgroundColorDark : backgroundColor,
-        }}
-        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-gray-200/20 dark:border-gray-700/20"
+        style={{ backgroundColor: theme === "dark" ? bgDark : bgLight }}
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b border-gray-200/10 dark:border-gray-700/10"
       >
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
             <motion.a
               href="#home"
               onClick={(e) => {
                 e.preventDefault();
                 handleClick("#home");
               }}
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent"
+              className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300"
               whileHover={{ scale: 1.05 }}
             >
               EY
             </motion.a>
 
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-10">
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -97,17 +82,18 @@ export default function Navbar() {
                     e.preventDefault();
                     handleClick(item.href);
                   }}
-                  className={`relative font-medium transition-colors ${
+                  className={`relative font-medium transition-colors flex items-center gap-2 text-sm tracking-wide ${
                     activeSection === item.href.substring(1)
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "text-blue-600 dark:text-cyan-400"
+                      : "text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-cyan-400"
                   }`}
                 >
+                  <span className="text-xs font-mono text-gray-400">{item.id}.</span>
                   {item.name}
                   {activeSection === item.href.substring(1) && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-600"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-600 to-cyan-500"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -115,6 +101,7 @@ export default function Navbar() {
               ))}
             </div>
 
+            {/* Actions */}
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -140,6 +127,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
+      {/* Mobile Menu */}
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -157,12 +145,13 @@ export default function Navbar() {
                     e.preventDefault();
                     handleClick(item.href);
                   }}
-                  className={`text-2xl font-semibold transition-colors ${
+                  className={`flex items-center gap-3 text-xl font-semibold ${
                     activeSection === item.href.substring(1)
-                      ? "text-blue-600 dark:text-blue-400"
+                      ? "text-blue-600 dark:text-cyan-400"
                       : "text-gray-600 dark:text-gray-300"
                   }`}
                 >
+                  <span className="text-sm font-mono text-gray-400">{item.id}.</span>
                   {item.name}
                 </a>
               ))}

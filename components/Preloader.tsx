@@ -63,7 +63,7 @@ export default function Preloader() {
             transition={{ delay: 1.1, duration: 0.6 }}
             className="text-sm md:text-base mt-2 text-gray-600 dark:text-gray-300"
           >
-            Flutter Developer & UI/UX Designer
+            App Developer & UI/UX Designer
           </motion.p>
         </motion.div>
       )}

@@ -8,7 +8,7 @@ export default function Footer() {
 
   const socials = [
     { name: "GitHub", icon: Github, href: "https://github.com/ehsanyaqoob" },
-    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/ehsanyaqoob" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com/in/ehsany" },
     { name: "Email", icon: Mail, href: "mailto:ehsanyaqoob@gmail.com" },
   ];
 

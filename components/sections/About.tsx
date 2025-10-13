@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { skills, skillCategories } from "@/data/skills";
 import * as LucideIcons from "lucide-react";
+import Image from "next/image";
 
 export default function About() {
   const groupedSkills = skills.reduce((acc, skill) => {
@@ -62,77 +63,108 @@ export default function About() {
             className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-8 md:p-12 mb-16 shadow-xl"
           >
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
-                  Passionate Developer & Designer
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                  I'm a Flutter Developer specializing in creating beautiful,
-                  responsive, and user-centric mobile and web applications. With
-                  a strong foundation in both development and design, I bridge
-                  the gap between aesthetics and functionality.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
-                  My journey in software development has been driven by a passion
-                  for crafting seamless user experiences. I believe that great
-                  apps are not just about clean code, but about understanding
-                  user needs and translating them into intuitive interfaces.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  When I'm not coding, you'll find me exploring the latest design
-                  trends, contributing to open-source projects, or sharing my
-                  knowledge with the developer community.
-                </p>
+              {/* Profile Picture Section */}
+              <div className="flex justify-center md:justify-start">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="relative"
+                >
+                  <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+                    <Image
+                      src="/me.jpg"
+                      alt="Ehsan Yaqoob - Mobile Engineer"
+                      width={320}
+                      height={320}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full animate-pulse"></div>
+                  <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-cyan-500 rounded-full animate-pulse"></div>
+                </motion.div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg text-center"
-                >
-                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                    5+
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium">
-                    Years Experience
-                  </div>
-                </motion.div>
+              {/* Content Section */}
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-800 dark:text-white">
+                  Mobile Engineer & Flutter Specialist
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                  By profession, I am a Mobile Engineer with 3+ years of applied experience 
+                  in architecting, developing, and deploying mobile applications across 
+                  Android and iOS ecosystems for both public and private sector clients.
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                  My expertise is centered on Flutter & Dart, with a strong command over 
+                  state management (GetX, Provider), networking (REST APIs, GraphQL, Firebase), 
+                  authentication (OAuth2.0, JWT, social logins), and DevOps practices 
+                  (Git, CI/CD, automated testing & deployment).
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                  I specialize in building scalable, modular, and performance-optimized 
+                  applications by applying Clean Architecture principles, performance 
+                  profiling, and security hardening. Alongside Flutter, I maintain working 
+                  familiarity with native Android/iOS stacks and React Native.
+                </p>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed font-medium bg-blue-50 dark:bg-blue-900/20 px-4 py-3 rounded-lg border-l-4 border-blue-500">
+                  🚀 <strong>Currently learning native iOS development</strong> to expand my expertise 
+                  and become a full-stack iOS developer, complementing my cross-platform skills 
+                  with deep native platform knowledge.
+                </p>
+                
+                {/* Professional Stats */}
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-white dark:bg-gray-700 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                      3+
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                      Years Experience
+                    </div>
+                  </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg text-center"
-                >
-                  <div className="text-4xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">
-                    50+
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium">
-                    Projects Completed
-                  </div>
-                </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-white dark:bg-gray-700 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-1">
+                      15+
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                      Production Apps
+                    </div>
+                  </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg text-center"
-                >
-                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
-                    30+
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium">
-                    Happy Clients
-                  </div>
-                </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-white dark:bg-gray-700 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                      25%
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                      Performance Gain
+                    </div>
+                  </motion.div>
 
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="bg-white dark:bg-gray-700 rounded-xl p-6 shadow-lg text-center"
-                >
-                  <div className="text-4xl font-bold text-cyan-600 dark:text-cyan-400 mb-2">
-                    100k+
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium">
-                    App Users
-                  </div>
-                </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-white dark:bg-gray-700 rounded-xl p-4 shadow-lg text-center"
+                  >
+                    <div className="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-400 mb-1">
+                      iOS
+                    </div>
+                    <div className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+                      Next Goal
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </motion.div>

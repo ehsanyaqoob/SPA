@@ -16,7 +16,7 @@ const SkillsSection = () => {
         Technical Skills
       </motion.h2>
 
-      <div className="space-y-10">
+      <div className="space-y-8">
         {skillsData.map((category, categoryIndex) => (
           <motion.div
             key={category.title}
@@ -26,10 +26,11 @@ const SkillsSection = () => {
             transition={{ delay: categoryIndex * 0.1 }}
             className="group"
           >
-            <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+            <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200 flex items-center">
+              <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
               {category.title}
             </h3>
-            <div className="flex flex-wrap gap-2 items-center">
+            <div className="flex flex-wrap items-center gap-3 text-gray-700 dark:text-gray-300">
               {category.items.map((skill, index) => (
                 <React.Fragment key={skill.name}>
                   {skill.link ? (
@@ -37,17 +38,17 @@ const SkillsSection = () => {
                       href={skill.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium hover:underline decoration-blue-600 dark:decoration-blue-400 decoration-2 underline-offset-4"
+                      className="font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 hover:underline"
                     >
                       {skill.name}
                     </a>
                   ) : (
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">
+                    <span className="font-medium">
                       {skill.name}
                     </span>
                   )}
                   {index < category.items.length - 1 && (
-                    <span className="text-gray-400 dark:text-gray-600">•</span>
+                    <span className="text-gray-400 dark:text-gray-600 text-sm">•</span>
                   )}
                 </React.Fragment>
               ))}

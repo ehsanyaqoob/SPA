@@ -2,77 +2,57 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { skills, skillCategories } from "@/data/skills";
-import * as LucideIcons from "lucide-react";
+import { skillsData } from "@/data/skills";
 
 const SkillsSection = () => {
-  const grouped = Object.entries(skillCategories).map(([key, label]) => ({
-    label,
-    category: key,
-    items: skills.filter((s) => s.category === key),
-  }));
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <section className="max-w-4xl mx-auto py-20 px-4">
-      <h2 className="text-3xl font-semibold tracking-tight text-center mb-10 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
-        Skills & Technologies
-      </h2>
+    <section className="max-w-5xl mx-auto py-20 px-6">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-4xl font-bold tracking-tight text-center mb-16 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent"
+      >
+        Technical Skills
+      </motion.h2>
 
-      <div className="space-y-12">
-        {grouped.map(({ label, items }) => (
-          <div key={label}>
-            <h3 className="text-xl font-semibold mb-6 text-gray-700 dark:text-gray-300">
-              {label}
+      <div className="space-y-10">
+        {skillsData.map((category, categoryIndex) => (
+          <motion.div
+            key={category.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: categoryIndex * 0.1 }}
+            className="group"
+          >
+            <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+              {category.title}
             </h3>
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-            >
-              {items.map((skill) => {
-                const IconComponent =
-                  LucideIcons[skill.icon as keyof typeof LucideIcons] as any;
-                return (
-                  <motion.div
-                    key={skill.name}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center justify-center gap-3 cursor-pointer border border-gray-100 dark:border-gray-700"
-                  >
-                    {IconComponent && (
-                      <IconComponent className="w-8 h-8 text-blue-600 dark:text-blue-400" />
-                    )}
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300 text-center">
+            <div className="flex flex-wrap gap-2 items-center">
+              {category.items.map((skill, index) => (
+                <React.Fragment key={skill.name}>
+                  {skill.link ? (
+                    <a
+                      href={skill.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 font-medium hover:underline decoration-blue-600 dark:decoration-blue-400 decoration-2 underline-offset-4"
+                    >
+                      {skill.name}
+                    </a>
+                  ) : (
+                    <span className="text-gray-700 dark:text-gray-300 font-medium">
                       {skill.name}
                     </span>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </div>
+                  )}
+                  {index < category.items.length - 1 && (
+                    <span className="text-gray-400 dark:text-gray-600">•</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>

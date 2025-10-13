@@ -1,184 +1,78 @@
-export interface Skill {
+export interface SkillItem {
   name: string;
-  icon: string;
-  category: 'mobile' | 'frontend' | 'backend' | 'tools' | 'design';
   link?: string;
 }
 
-export const skills: Skill[] = [
-  // Mobile Development (Your Core Expertise)
-  { 
-    name: "Flutter", 
-    icon: "Smartphone", 
-    category: "mobile",
-    link: "https://flutter.dev" 
-  },
-  { 
-    name: "Dart", 
-    icon: "Code", 
-    category: "mobile",
-    link: "https://dart.dev"
-  },
-  { 
-    name: "Android Development", 
-    icon: "Smartphone", 
-    category: "mobile",
-    link: "https://developer.android.com"
-  },
-  { 
-    name: "iOS Development", 
-    icon: "Smartphone", 
-    category: "mobile",
-    link: "https://developer.apple.com/ios/"
-  },
-  { 
-    name: "React Native", 
-    icon: "Smartphone", 
-    category: "mobile",
-    link: "https://reactnative.dev"
-  },
+export interface SkillCategory {
+  title: string;
+  items: SkillItem[];
+}
 
-  // Frontend Development
-  { 
-    name: "JavaScript", 
-    icon: "FileCode", 
-    category: "frontend",
-    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+export const skillsData: SkillCategory[] = [
+  {
+    title: "Mobile Development",
+    items: [
+      { name: "Flutter", link: "https://flutter.dev" },
+      { name: "Dart", link: "https://dart.dev" },
+      { name: "Android", link: "https://developer.android.com" },
+      { name: "iOS", link: "https://developer.apple.com/ios/" },
+      { name: "React Native", link: "https://reactnative.dev" },
+      { name: "Kotlin", link: "https://kotlinlang.org" },
+      { name: "Java", link: "https://docs.oracle.com/en/java/" },
+      { name: "Objective-C", link: "https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html" },
+    ],
   },
-  { 
-    name: "TypeScript", 
-    icon: "FileCode", 
-    category: "frontend",
-    link: "https://www.typescriptlang.org"
+  {
+    title: "State Management & Architecture",
+    items: [
+      { name: "GetX", link: "https://pub.dev/packages/get" },
+      { name: "Bloc", link: "https://bloclibrary.dev" },
+      { name: "Provider", link: "https://pub.dev/packages/provider" },
+      { name: "MVC" },
+      { name: "MVVM" },
+      { name: "Clean Architecture", link: "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" },
+    ],
   },
-  { 
-    name: "React", 
-    icon: "Atom", 
-    category: "frontend",
-    link: "https://reactjs.org"
+  {
+    title: "Backend & APIs",
+    items: [
+      { name: "Firebase", link: "https://firebase.google.com" },
+      { name: "REST APIs", link: "https://restfulapi.net" },
+      { name: "GraphQL", link: "https://graphql.org" },
+      { name: "Node.js", link: "https://nodejs.org" },
+      { name: "Socket.io", link: "https://socket.io" },
+    ],
   },
-  { 
-    name: "Next.js", 
-    icon: "Layout", 
-    category: "frontend",
-    link: "https://nextjs.org"
+  {
+    title: "Databases & Storage",
+    items: [
+      { name: "SQLite", link: "https://www.sqlite.org" },
+      { name: "Hive", link: "https://pub.dev/packages/hive" },
+      { name: "Shared Preferences", link: "https://pub.dev/packages/shared_preferences" },
+      { name: "Realm", link: "https://realm.io" },
+      { name: "IndexedDB", link: "https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API" },
+    ],
   },
-  { 
-    name: "Tailwind CSS", 
-    icon: "Palette", 
-    category: "frontend",
-    link: "https://tailwindcss.com"
+  {
+    title: "Tools & DevOps",
+    items: [
+      { name: "Git", link: "https://git-scm.com" },
+      { name: "GitHub", link: "https://github.com" },
+      { name: "CI/CD" },
+      { name: "JIRA", link: "https://www.atlassian.com/software/jira" },
+      { name: "Postman", link: "https://www.postman.com" },
+      { name: "Android Studio", link: "https://developer.android.com/studio" },
+      { name: "VS Code", link: "https://code.visualstudio.com" },
+    ],
   },
-
-  // Backend & APIs
-  { 
-    name: "Firebase", 
-    icon: "Flame", 
-    category: "backend",
-    link: "https://firebase.google.com"
+  {
+    title: "Testing & Methodologies",
+    items: [
+      { name: "Unit Testing" },
+      { name: "UI Testing" },
+      { name: "Agile", link: "https://agilemanifesto.org" },
+      { name: "Scrum", link: "https://www.scrum.org" },
+      { name: "SOLID Principles", link: "https://en.wikipedia.org/wiki/SOLID" },
+    ],
   },
-  { 
-    name: "REST APIs", 
-    icon: "Globe", 
-    category: "backend",
-    link: "https://restfulapi.net"
-  },
-  { 
-    name: "GraphQL", 
-    icon: "Database", 
-    category: "backend",
-    link: "https://graphql.org"
-  },
-  { 
-    name: "Node.js", 
-    icon: "Server", 
-    category: "backend",
-    link: "https://nodejs.org"
-  },
-  { 
-    name: "Postman", 
-    icon: "Globe", 
-    category: "backend",
-    link: "https://postman.com"
-  },
-
-  // Tools & DevOps
-  { 
-    name: "Git", 
-    icon: "GitBranch", 
-    category: "tools",
-    link: "https://git-scm.com"
-  },
-  { 
-    name: "GitHub", 
-    icon: "Github", 
-    category: "tools",
-    link: "https://github.com"
-  },
-  { 
-    name: "GitHub Actions", 
-    icon: "GitBranch", 
-    category: "tools",
-    link: "https://github.com/features/actions"
-  },
-  { 
-    name: "VS Code", 
-    icon: "Code2", 
-    category: "tools",
-    link: "https://code.visualstudio.com"
-  },
-  { 
-    name: "Android Studio", 
-    icon: "Code2", 
-    category: "tools",
-    link: "https://developer.android.com/studio"
-  },
-  { 
-    name: "JIRA", 
-    icon: "List", 
-    category: "tools",
-    link: "https://www.atlassian.com/software/jira"
-  },
-  { 
-    name: "Trello", 
-    icon: "List", 
-    category: "tools",
-    link: "https://trello.com"
-  },
-
-  // Methodologies & Practices
-  { 
-    name: "Agile/Scrum", 
-    icon: "Users", 
-    category: "tools",
-    link: "https://www.scrum.org"
-  },
-  { 
-    name: "CI/CD", 
-    icon: "RefreshCw", 
-    category: "tools",
-    link: "https://www.redhat.com/en/topics/devops/what-is-ci-cd"
-  },
-  { 
-    name: "Clean Architecture", 
-    icon: "Layers", 
-    category: "tools"
-  },
-  { 
-    name: "State Management (GetX, Provider)", 
-    icon: "Settings", 
-    category: "mobile"
-  },
-  { 
-    name: "Automated Testing", 
-    icon: "TestTube", 
-    category: "tools"
-  }
 ];
-
-export const skillCategories = {
-  mobile: "Mobile Development",
-  frontend: "Frontend Development",
-  backend: "Backend & APIs",
-  tools: "Tools & DevOps",
-};

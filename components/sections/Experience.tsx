@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { experiences } from "@/data/experience";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
 export interface Experience {
   id: number;
   title: string;

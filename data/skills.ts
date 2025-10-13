@@ -11,7 +11,7 @@ export const skills: Skill[] = [
     name: "Flutter", 
     icon: "Smartphone", 
     category: "mobile",
-    link: "https://flutter.dev"
+    link: "https://flutter.dev" 
   },
   { 
     name: "Dart", 

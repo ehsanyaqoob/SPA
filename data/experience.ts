@@ -1,5 +1,10 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
+
 export interface Experience {
-  id: string;
+  id: number;
   title: string;
   company: string;
   location: string;
@@ -11,7 +16,7 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    id: "1",
+    id: 1,
     title: "Mobile App Developer",
     company: "National Police Foundation",
     location: "Islamabad, Pakistan",
@@ -27,7 +32,7 @@ export const experiences: Experience[] = [
     technologies: ["Flutter", "Dart", "Firebase", "REST APIs", "GetX", "CI/CD", "Git", "Performance Optimization"]
   },
   {
-    id: "2",
+    id: 2,
     title: "Software Developer",
     company: "Tech Solutions",
     location: "Islamabad, Pakistan",
@@ -43,7 +48,7 @@ export const experiences: Experience[] = [
     technologies: ["Flutter", "REST APIs", "Git", "GitHub Actions", "Agile", "CI/CD", "System Architecture"]
   },
   {
-    id: "3",
+    id: 3,
     title: "Flutter Developer",
     company: "Freelance Projects",
     location: "Islamabad, Pakistan",

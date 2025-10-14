@@ -12,47 +12,50 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: "1",
-    title: "Senior Flutter Developer",
-    company: "Tech Solutions Inc",
-    location: "Remote",
-    startDate: "Jan 2023",
+    title: "Mobile App Developer",
+    company: "National Police Foundation",
+    location: "Islamabad, Pakistan",
+    startDate: "Jul 2023",
     endDate: "Present",
     description: [
-      "Led development of 3 major mobile applications serving 100k+ users",
-      "Architected scalable Flutter solutions using clean architecture principles",
-      "Mentored junior developers and conducted code reviews",
-      "Integrated third-party APIs and payment gateways",
+      "Architected and developed cross-platform mobile applications using Flutter, serving critical law enforcement operations with 99.9% uptime",
+      "Engineered real-time data synchronization systems integrating Firebase services and REST APIs, handling 50,000+ daily transactions",
+      "Optimized application performance by 25% through advanced state management implementations and code-level performance tuning",
+      "Orchestrated CI/CD pipelines reducing deployment cycles by 40% and implementing comprehensive automated testing strategies",
+      "Led stakeholder collaboration sessions to define technical requirements and deliver scalable solutions ahead of schedule"
     ],
-    technologies: ["Flutter", "Dart", "Firebase", "REST API", "BLoC", "Git"],
+    technologies: ["Flutter", "Dart", "Firebase", "REST APIs", "GetX", "CI/CD", "Git", "Performance Optimization"]
   },
   {
     id: "2",
-    title: "Flutter Developer",
-    company: "Digital Innovations",
-    location: "Hybrid",
-    startDate: "Mar 2021",
-    endDate: "Dec 2022",
+    title: "Software Developer",
+    company: "Tech Solutions",
+    location: "Islamabad, Pakistan",
+    startDate: "Jan 2023",
+    endDate: "Jun 2023",
     description: [
-      "Developed and maintained 5+ cross-platform mobile applications",
-      "Collaborated with UI/UX designers to implement pixel-perfect designs",
-      "Optimized app performance resulting in 40% faster load times",
-      "Implemented state management solutions using Provider and GetX",
+      "Designed and implemented REST API architectures, reducing latency by 30% and improving data consistency across microservices",
+      "Spearheaded development workflow optimizations using Git, GitHub Actions, and Agile methodologies, increasing team velocity by 25%",
+      "Engineered responsive UI components achieving 20% faster render times and enhanced cross-platform compatibility",
+      "Mentored junior developers through code reviews and technical guidance, elevating team code quality standards",
+      "Architected automated deployment systems reducing manual intervention by 60% and improving release reliability"
     ],
-    technologies: ["Flutter", "Dart", "Provider", "GetX", "SQLite", "Figma"],
+    technologies: ["Flutter", "REST APIs", "Git", "GitHub Actions", "Agile", "CI/CD", "System Architecture"]
   },
   {
     id: "3",
-    title: "Mobile App Developer",
-    company: "StartUp Labs",
-    location: "On-site",
-    startDate: "Jun 2019",
-    endDate: "Feb 2021",
+    title: "Flutter Developer",
+    company: "Freelance Projects",
+    location: "Islamabad, Pakistan",
+    startDate: "Sep 2022",
+    endDate: "Dec 2022",
     description: [
-      "Built MVP applications for multiple startup clients",
-      "Worked closely with product teams to define features and requirements",
-      "Integrated analytics and crash reporting tools",
-      "Participated in agile development cycles and sprint planning",
+      "Developed modular, reusable UI component libraries serving as foundation for multiple client applications",
+      "Implemented secure authentication systems integrating Firebase Auth and Firestore with role-based access control",
+      "Optimized application performance through advanced debugging techniques and memory management strategies",
+      "Collaborated with cross-functional teams to translate complex UX requirements into production-ready features",
+      "Delivered MVP prototypes to enterprise clients, securing 100% project approval and follow-on contracts"
     ],
-    technologies: ["Flutter", "Dart", "Firebase", "Jira", "Git", "CI/CD"],
-  },
+    technologies: ["Flutter", "Dart", "Firebase", "UI/UX", "System Design", "Prototyping", "Authentication Systems"]
+  }
 ];

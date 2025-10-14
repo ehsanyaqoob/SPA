@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Ehsan Yaqoob | Flutter & Mobile App Developer",
+  title: "Ehsan Yaqoob | App Developer",
   description:
     "Ehsan Yaqoob — Flutter and Mobile App Developer skilled in building scalable Android and iOS apps with clean architecture, intuitive UI/UX, and seamless performance.",
   keywords: [

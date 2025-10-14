@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -19,11 +19,12 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     toast({
       title: "Message sent successfully!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
+      description: "Thank you for reaching out. I'll get back to you within 24 hours.",
     });
 
     setFormData({ name: "", email: "", subject: "", message: "" });
@@ -54,8 +55,7 @@ export default function Contact() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 mx-auto rounded-full mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-            Have a project in mind? Let's work together to bring your ideas to
-            life
+            Ready to bring your mobile app idea to life? Let's discuss your project!
           </p>
         </motion.div>
 
@@ -84,10 +84,10 @@ export default function Contact() {
                       Email
                     </h4>
                     <a
-                      href="mailto:ehsanyaqoob@gmail.com"
+                      href="mailto:ehsanyaqoob07@gmail.com"
                       className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
-                      ehsanyaqoob@gmail.com
+                      ehsanyaqoob07@gmail.com
                     </a>
                   </div>
                 </motion.div>
@@ -97,15 +97,18 @@ export default function Contact() {
                   className="flex items-start gap-4"
                 >
                   <div className="p-3 bg-cyan-600 rounded-lg">
-                    <MapPin className="w-6 h-6 text-white" />
+                    <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 dark:text-white mb-1">
-                      Location
+                      Phone
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      Available for remote work worldwide
-                    </p>
+                    <a
+                      href="tel:+923126514491"
+                      className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      +92 312-651-4491
+                    </a>
                   </div>
                 </motion.div>
 
@@ -114,17 +117,41 @@ export default function Contact() {
                   className="flex items-start gap-4"
                 >
                   <div className="p-3 bg-blue-600 rounded-lg">
-                    <Phone className="w-6 h-6 text-white" />
+                    <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 dark:text-white mb-1">
-                      Availability
+                      Location
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Open to new opportunities
+                      Islamabad, Pakistan • Remote Available
                     </p>
                   </div>
                 </motion.div>
+
+                {/* Social Links */}
+                <div className="flex gap-4 pt-4">
+                  <motion.a
+                    href="https://linkedin.com/in/ehsany"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                  </motion.a>
+                  <motion.a
+                    href="https://github.com/ehsanyaqoob"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="p-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                  </motion.a>
+                </div>
               </div>
             </div>
 
@@ -133,19 +160,19 @@ export default function Contact() {
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <span className="mt-1">✓</span>
-                  <span>5+ years of professional experience</span>
+                  <span>3+ years of professional Flutter development</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1">✓</span>
-                  <span>Clean, maintainable, and scalable code</span>
+                  <span>Production apps serving real users</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1">✓</span>
-                  <span>Strong focus on user experience</span>
+                  <span>Clean architecture & performance optimization</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-1">✓</span>
-                  <span>Clear communication and timely delivery</span>
+                  <span>Timely delivery with clear communication</span>
                 </li>
               </ul>
             </div>
@@ -215,7 +242,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-                    placeholder="Project Inquiry"
+                    placeholder="Mobile App Development Project"
                   />
                 </div>
 
@@ -224,7 +251,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
-                    Message
+                    Project Details
                   </label>
                   <textarea
                     id="message"
@@ -234,7 +261,7 @@ export default function Contact() {
                     required
                     rows={5}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell me about your mobile app project, timeline, and requirements..."
                   />
                 </div>
 

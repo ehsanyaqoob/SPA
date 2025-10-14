@@ -20,8 +20,8 @@ export default function Projects() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 mx-auto rounded-full mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-            Building production-ready mobile applications that solve real-world problems. 
-            Each project showcases my expertise in Flutter development, clean architecture, 
+            Building production-ready mobile applications that solve real-world problems.
+            Each project showcases my expertise in Flutter development, clean architecture,
             and delivering user-centric solutions.
           </p>
         </motion.div>
@@ -39,11 +39,11 @@ export default function Projects() {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center">
+                    {/* <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center">
                       <span className="text-white font-bold text-lg">
                         {project.title.charAt(0)}
                       </span>
-                    </div>
+                    </div> */}
                     <div>
                       <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
                         {project.title}

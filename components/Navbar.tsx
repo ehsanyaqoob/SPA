@@ -66,10 +66,12 @@ export default function Navbar() {
                 e.preventDefault();
                 handleClick("#home");
               }}
-              className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300"
+              className="text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
             >
-              EY
+
+              {/* logo path src attribute mein add karna hai public folder mein file rakna hai */}
+              <img src="/favicon.jpeg" alt="Logo" className="w-10 h-10" />
             </motion.a>
 
             {/* Desktop Nav */}

@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   title: "Ehsan Yaqoob | App Developer",
   description:
     "Ehsan Yaqoob — Flutter and Mobile App Developer skilled in building scalable Android and iOS apps with clean architecture, intuitive UI/UX, and seamless performance.",
+icons: {
+    icon: '/favicon.jpeg',
+    shortcut: '/favicon.jpeg',
+    apple: '/favicon.jpeg',
+  },
   keywords: [
     "Flutter Developer",
     "Mobile App Developer",
@@ -57,6 +62,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Favicon ager change karna hy tu src mein osi file ka name do jo pulic mein parha hy */}
+        <link rel="icon" href="/favicon.jpeg" type="image/jpeg" />
+        <link rel="shortcut icon" href="/favicon.jpeg" type="image/jpeg" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

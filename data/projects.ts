@@ -31,6 +31,6 @@ export const projects: Project[] = [
     description: "Modern furniture e-commerce platform featuring 3D product visualization, AR preview, and seamless shopping experience with real-time inventory management and order tracking system.",
     techStack: ["Flutter", "Node.js", "MongoDB", "AR Core", "Stripe", "Cloudinary"],
     liveUrl: "https://funica-app.com",
-    githubUrl: "https://github.com/ehsanyaqoob/funica-ecommerce",
+    githubUrl: "https://github.com/ehsanyaqoob/funica",
   },
 ];

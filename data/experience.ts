@@ -17,10 +17,10 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 1,
-    title: "Mobile App Developer",
+    title: "App Developer",
     company: "National Police Foundation",
     location: "Islamabad, Pakistan",
-    startDate: "Jul 2023",
+    startDate: "May 2024",
     endDate: "Present",
     description: [
       "Architected and developed cross-platform mobile applications using Flutter, serving critical law enforcement operations with 99.9% uptime",
@@ -36,8 +36,8 @@ export const experiences: Experience[] = [
     title: "Software Developer",
     company: "Tech Solutions",
     location: "Islamabad, Pakistan",
-    startDate: "Jan 2023",
-    endDate: "Jun 2023",
+    startDate: "Dec 2023",
+    endDate: "March 2024",
     description: [
       "Designed and implemented REST API architectures, reducing latency by 30% and improving data consistency across microservices",
       "Spearheaded development workflow optimizations using Git, GitHub Actions, and Agile methodologies, increasing team velocity by 25%",
@@ -50,10 +50,10 @@ export const experiences: Experience[] = [
   {
     id: 3,
     title: "Flutter Developer",
-    company: "Freelance Projects",
+    company: "Logixsy Tech",
     location: "Islamabad, Pakistan",
-    startDate: "Sep 2022",
-    endDate: "Dec 2022",
+    startDate: "July 2023",
+    endDate: "Nov 2023",
     description: [
       "Developed modular, reusable UI component libraries serving as foundation for multiple client applications",
       "Implemented secure authentication systems integrating Firebase Auth and Firestore with role-based access control",

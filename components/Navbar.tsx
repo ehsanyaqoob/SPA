@@ -71,7 +71,7 @@ export default function Navbar() {
             >
 
               {/* logo path src attribute mein add karna hai public folder mein file rakna hai */}
-              <img src="/favicon.jpeg" alt="Logo" className="w-10 h-10" />
+              <img src="/spa2.png" alt="Logo" className="w-10 h-10" />
             </motion.a>
 
             {/* Desktop Nav */}

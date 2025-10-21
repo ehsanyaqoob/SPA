@@ -62,5 +62,21 @@ export const experiences: Experience[] = [
       "Delivered MVP prototypes to enterprise clients, securing 100% project approval and follow-on contracts"
     ],
     technologies: ["Flutter", "Dart", "Firebase", "UI/UX", "System Design", "Prototyping", "Authentication Systems"]
+  },
+  {
+    id: 4,
+    title: "Software Developer",
+    company: "HexaQuantum",
+    location: "Remote",
+    startDate: "May 2022",
+    endDate: "Jan 2023",
+    description: [
+      "Developed and maintained full-stack applications using modern web technologies, delivering 15+ production-ready features",
+      "Implemented responsive UI components with React and TypeScript, improving user engagement by 30% across platforms",
+      "Collaborated in Agile teams to architect scalable backend services with Node.js and cloud database solutions",
+      "Enhanced application security by implementing authentication middleware and data encryption protocols",
+      "Conducted code reviews and contributed to technical documentation, maintaining 95%+ code quality standards"
+    ],
+    technologies: ["React", "TypeScript", "Node.js", "MongoDB", "Agile", "REST APIs", "Git", "Cloud Services"]
   }
 ];

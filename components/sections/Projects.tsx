@@ -1,13 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { projects } from "@/data/projects";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+
+  // show 3 by default, or all if expanded
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section id="projects" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-6">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,8 +33,9 @@ export default function Projects() {
           </p>
         </motion.div>
 
+        {/* Project Cards */}
         <div className="max-w-4xl mx-auto space-y-8">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
@@ -38,23 +46,12 @@ export default function Projects() {
             >
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div className="flex-1">
-                  <div className="flex items-center gap-4 mb-4">
-                    {/* <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
-                        {project.title.charAt(0)}
-                      </span>
-                    </div> */}
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">
-                        {project.description}
-                      </p>
-                    </div>
-                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2">
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
@@ -95,6 +92,7 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* View More / Less Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,11 +100,35 @@ export default function Projects() {
           transition={{ delay: 0.5, duration: 0.6 }}
           className="text-center mt-12"
         >
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+          >
+            {showAll ? (
+              <>
+                View Less <ChevronUp className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                View More <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        </motion.div>
+
+        {/* GitHub Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+          className="text-center mt-8"
+        >
           <a
             href="https://github.com/ehsanyaqoob"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-900 transition-all duration-300"
           >
             <Github className="w-5 h-5" />
             Explore More on GitHub

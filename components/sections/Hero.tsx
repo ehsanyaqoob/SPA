@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -38,6 +38,16 @@ export default function Hero() {
 
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
+
+  const handleDownloadResume = () => {
+    // Create a temporary anchor element
+    const link = document.createElement('a');
+    link.href = '/ehsan-resume-3-years-exp.pdf'; // Make sure to put your resume in the public folder
+    link.download = 'Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section
@@ -96,6 +106,13 @@ export default function Hero() {
                 View My Work
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
+              <button
+                onClick={handleDownloadResume}
+                className="group px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-full font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              >
+                Download Resume
+                <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              </button>
               <Link
                 href="#contact"
                 className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-full font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 hover:shadow-xl hover:scale-105 transition-all duration-300"

@@ -42,7 +42,7 @@ export default function Hero() {
   const handleDownloadResume = () => {
     // Create a temporary anchor element
     const link = document.createElement('a');
-    link.href = '/ehsan-resume-3-years-exp.pdf'; // Make sure to put your resume in the public folder
+    link.href = 'ehsan-yaqoob-resume-3years.pdf'; // Make sure to put your resume in the public folder
     link.download = 'Resume.pdf';
     document.body.appendChild(link);
     link.click();

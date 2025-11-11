@@ -48,7 +48,7 @@ icons: {
     card: "summary_large_image",
     title: "Ehsan Yaqoob | Flutter & Mobile App Developer",
     description:
-      "Flutter Developer specializing in Android, iOS, and cross-platform app development with a focus on performance and design.",
+      "Flutter & Mobile App Developer specializing in Android, iOS, and cross-platform app development with a focus on performance and design.",
     creator: "@ehsanyaqoob",
     images: ["https://ehsanyaqoob.com/og-image.jpg"],
   },

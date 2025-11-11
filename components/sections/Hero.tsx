@@ -35,7 +35,7 @@ export default function Hero() {
         }
       }
     }, isDeleting ? 50 : 100);
-
+    
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
 

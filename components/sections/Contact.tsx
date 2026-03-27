@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send, Github, Linkedin, Rocket, MessageCircle, Zap } from "lucide-react";
+import { Mail, Send, Github, Linkedin, MessageCircle, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -10,293 +10,133 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [activeField, setActiveField] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
     toast({
-      title: "🚀 Message Launched!",
-      description: "Your project idea is on its way! I'll get back to you within 24 hours.",
+      title: "Message Sent!",
+      description: "Thanks for reaching out! I'll get back to you soon.",
     });
-
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", message: "" });
     setIsSubmitting(false);
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const floatingIcons = [
-    { icon: "📱", style: "top-10 left-10" },
-    { icon: "⚡", style: "top-20 right-16" },
-    { icon: "🎯", style: "bottom-20 left-20" },
-    { icon: "🚀", style: "bottom-10 right-10" },
-  ];
-
   return (
-    <section
-      id="contact"
-      className="py-20 bg-gradient-to-br from-blue-50 via-cyan-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden"
-    >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {floatingIcons.map((item, index) => (
-          <motion.div
-            key={index}
-            className={`absolute text-2xl opacity-10 ${item.style}`}
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 10, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: index * 1.2,
-            }}
-          >
-            {item.icon}
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
+        
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="text-center mb-16 space-y-4"
         >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring" }}
-            className="w-20 h-20 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl mx-auto mb-6 flex items-center justify-center"
-          >
-            <MessageCircle className="w-10 h-10 text-white" />
-          </motion.div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
-            Let's Build Something Amazing
+          <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter">
+            Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-            Your next mobile app is just a conversation away. Let's turn your idea into reality!
-          </p>
+          <div className="flex items-center justify-center gap-2 text-[#023E8A] text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">
+            <div className="h-px w-6 bg-[#023E8A]/30" />
+            <span>Available for new projects</span>
+            <div className="h-px w-6 bg-[#023E8A]/30" />
+          </div>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
-          {/* Creative Left Panel */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-1 space-y-8"
-          >
-            {/* Quick Contact Cards */}
-            <div className="space-y-4">
-              <motion.a
-                href="mailto:ehsanyaqoob07@gmail.com"
-                whileHover={{ scale: 1.05, x: 10 }}
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border-2 border-transparent hover:border-blue-500"
-              >
-                <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl group-hover:scale-110 transition-transform">
-                  <Mail className="w-6 h-6 text-white" />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+          
+          {/* Left Column: Direct Links */}
+          <div className="md:col-span-4 space-y-10">
+             <div className="space-y-6">
+                <a href="mailto:ehsanyaqoob07@gmail.com" className="group flex flex-col gap-1 transition-all">
+                   <p className="text-[10px] font-black uppercase tracking-widest text-[#023E8A]">Drop an email</p>
+                   <p className="text-lg font-bold text-gray-300 group-hover:text-white transition-colors">ehsanyaqoob07@gmail.com</p>
+                </a>
+                <div className="flex flex-col gap-1">
+                   <p className="text-[10px] font-black uppercase tracking-widest text-[#023E8A]">Current Status</p>
+                   <p className="text-lg font-bold text-gray-300 flex items-center gap-2">
+                       <MapPin className="w-4 h-4 text-green-500" /> Islamabad, Pakistan
+                   </p>
                 </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-gray-800 dark:text-white">Email Me</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Quick response guaranteed</p>
-                </div>
-              </motion.a>
+             </div>
 
-              <motion.a
-                href="tel:+923126514491"
-                whileHover={{ scale: 1.05, x: 10 }}
-                className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border-2 border-transparent hover:border-green-500"
-              >
-                <div className="p-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl group-hover:scale-110 transition-transform">
-                  <Phone className="w-6 h-6 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-gray-800 dark:text-white">Call Me</h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">Let's talk instantly</p>
-                </div>
-              </motion.a>
-            </div>
+             <div className="flex gap-4">
+                <a href="https://github.com/ehsanyaqoob" target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-blue-500/50 transition-all text-gray-400 hover:text-white">
+                   <Github className="w-5 h-5" />
+                </a>
+                <a href="https://linkedin.com/in/ehsany" target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-blue-500/50 transition-all text-gray-400 hover:text-white">
+                   <Linkedin className="w-5 h-5" />
+                </a>
+             </div>
+          </div>
 
-            {/* Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl p-6 text-white"
-            >
-              <Zap className="w-8 h-8 mb-4" />
-              <h4 className="text-xl font-bold mb-3">Why Choose Me?</h4>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span>Projects Delivered</span>
-                  <span className="font-bold">15+</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Response Time</span>
-                  <span className="font-bold">&lt;24h</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span>Client Satisfaction</span>
-                  <span className="font-bold">100%</span>
-                </div>
-              </div>
-            </motion.div>
+          {/* Right Column: Minimalist Form */}
+          <div className="md:col-span-8">
+             <div className="p-8 md:p-12 rounded-[2.5rem] bg-white/[0.02] border border-white/5 backdrop-blur-3xl shadow-2xl relative overflow-hidden group">
+                <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                         <label className="text-[10px] font-black uppercase tracking-widest text-gray-600 block">Name</label>
+                         <input 
+                            type="text" 
+                            name="name" 
+                            value={formData.name} 
+                            onChange={handleChange}
+                            required
+                            placeholder="Type here..."
+                            className="w-full bg-transparent border-b border-white/10 pb-4 text-white text-lg font-medium focus:border-[#023E8A] outline-none transition-colors placeholder:text-gray-800"
+                        />
+                      </div>
+                      <div className="space-y-4">
+                         <label className="text-[10px] font-black uppercase tracking-widest text-gray-600 block">Email Address</label>
+                         <input 
+                            type="email" 
+                            name="email" 
+                            value={formData.email} 
+                            onChange={handleChange}
+                            required
+                            placeholder="Email..."
+                            className="w-full bg-transparent border-b border-white/10 pb-4 text-white text-lg font-medium focus:border-[#023E8A] outline-none transition-colors placeholder:text-gray-800"
+                        />
+                      </div>
+                   </div>
 
-            {/* Social Links with Animation */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-4 justify-center lg:justify-start"
-            >
-              {[
-                { icon: Linkedin, href: "https://linkedin.com/in/ehsany", color: "bg-blue-600 hover:bg-blue-700" },
-                { icon: Github, href: "https://github.com/ehsanyaqoob", color: "bg-gray-800 hover:bg-gray-900" },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`p-4 text-white rounded-xl transition-all duration-300 ${social.color} shadow-lg`}
-                >
-                  <social.icon className="w-5 h-5" />
-                </motion.a>
-              ))}
-            </motion.div>
-          </motion.div>
+                   <div className="space-y-4">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-600 block">Message</label>
+                      <textarea 
+                         name="message" 
+                         value={formData.message} 
+                         onChange={handleChange}
+                         required
+                         rows={4}
+                         placeholder="Let's discuss something amazing..."
+                         className="w-full bg-transparent border-b border-white/10 pb-4 text-white text-lg font-medium focus:border-[#023E8A] outline-none transition-colors resize-none placeholder:text-gray-800"
+                      />
+                   </div>
 
-          {/* Enhanced Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
-          >
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-2xl border border-gray-100 dark:border-gray-700">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg">
-                  <Rocket className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
-                  Start Your Project
-                </h3>
-              </div>
+                   <motion.button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center gap-3 px-10 py-4 bg-white text-black rounded-2xl font-bold hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                   >
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                      <Send className="w-4 h-4" />
+                   </motion.button>
+                </form>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      onFocus={() => setActiveField("name")}
-                      onBlur={() => setActiveField("")}
-                      required
-                      className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 transition-all duration-300"
-                      placeholder="John Doe"
-                    />
-                  </div>
+                {/* Subtle Background Accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#023E8A]/10 blur-[60px] pointer-events-none" />
+             </div>
+          </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      onFocus={() => setActiveField("email")}
-                      onBlur={() => setActiveField("")}
-                      required
-                      className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 transition-all duration-300"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                    Project Type *
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    onFocus={() => setActiveField("subject")}
-                    onBlur={() => setActiveField("")}
-                    required
-                    className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 transition-all duration-300"
-                    placeholder="Mobile App Development | Flutter Project | Consultation"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
-                    Tell Me About Your Project *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    onFocus={() => setActiveField("message")}
-                    onBlur={() => setActiveField("")}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 transition-all duration-300 resize-none"
-                    placeholder="Describe your app idea, target audience, timeline, and any specific requirements..."
-                  />
-                </div>
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Launching Your Message...
-                    </>
-                  ) : (
-                    <>
-                      <Rocket className="w-5 h-5" />
-                      Launch Project Discussion
-                    </>
-                  )}
-                </motion.button>
-              </form>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

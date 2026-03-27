@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   description:
     "Ehsan Yaqoob — Flutter and Mobile App Developer skilled in building scalable Android and iOS apps with clean architecture, intuitive UI/UX, and seamless performance.",
 icons: {
-    icon: '/spa2.png',
-    shortcut: '/spa2.png',
-    apple: '/spa2.png',
+    icon: '/spaicon.png',
+    shortcut: '/spaicon.png',
+    apple: '/spaicon.png',
   },
   keywords: [
     "Flutter Developer",
@@ -55,6 +55,8 @@ icons: {
   metadataBase: new URL("https://ehsanyaqoob.com"),
 };
 
+import { NexusBackground } from "@/components/ui/NexusBackground";
+
 export default function RootLayout({
   children,
 }: {
@@ -70,10 +72,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
+          <NexusBackground />
           {children}
           <Toaster />
         </ThemeProvider>

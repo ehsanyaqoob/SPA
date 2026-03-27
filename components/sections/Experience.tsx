@@ -1,142 +1,145 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { experiences } from "@/data/experience";
-import { Briefcase, Calendar, MapPin, ExternalLink } from "lucide-react";
-
-// Technology links mapping
-const techLinks: { [key: string]: string } = {
-  "Flutter": "https://flutter.dev",
-  "Dart": "https://dart.dev",
-  "Firebase": "https://firebase.google.com",
-  "REST APIs": "https://restfulapi.net",
-  "GetX": "https://pub.dev/packages/get",
-  "CI/CD": "https://about.gitlab.com/topics/ci-cd/",
-  "Git": "https://git-scm.com",
-  "GitHub Actions": "https://github.com/features/actions",
-  "Agile": "https://agilemanifesto.org",
-  "UI/UX": "https://www.interaction-design.org/literature/topics/ux-design",
-  "Widgets": "https://flutter.dev/docs/development/ui/widgets",
-  "Prototyping": "https://www.figma.com/prototyping/",
-};
+import { User, Briefcase, Download, Award } from "lucide-react";
 
 export default function Experience() {
-  const handleTechClick = (tech: string) => {
-    const link = techLinks[tech];
-    if (link) {
-      window.open(link, '_blank', 'noopener,noreferrer');
-    }
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/ehsanyaqoob.pdf';
+    link.download = 'Ehsan_Yaqoob_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
+  const personalInfo = {
+    name: "Ehsan Yaqoob",
+    email: "ehsanyaqoob07.@gmail.com",
+    location: "Islamabad, Pakistan"
+  };
+
+  const experience = [
+    {
+      id: 1,
+      title: "Mobile App Developer",
+      company: "National Police Foundation",
+      period: "Apr 2024 — Present",
+      bullets: ["Architecting scalable mobile solutions", "Deploying Android & iOS apps", "Applying Clean Architecture", "Hardening security protocols"]
+    },
+    {
+      id: 2,
+      title: "Mobile Developer",
+      company: "Tech Solutions",
+      period: "Dec 2023 — Mar 2024",
+      bullets: ["Developing cross-platform apps", "Optimizing app performance", "Integrating REST & Firebase", "Handling real-time data"]
+    },
+    {
+      id: 3,
+      title: "Flutter Developer",
+      company: "Logixsy Tech",
+      period: "Jan 2023 — Oct 2023",
+      bullets: ["Building modular UI components", "Handling complex Auth flows", "Implementing Flutter best practices", "Managing dev lifecycle"]
+    }
+  ];
+
+  const certifications = [
+    { title: "Flutter Certification", date: "2023" },
+    { title: "SOLC MasterClass", date: "2024" },
+    { title: "iOS App Development", date: "2025 - in progress" } 
+  ];
+
   return (
-    <section id="experience" className="py-20 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
-            Experience
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-            My professional journey and career milestones
-          </p>
-        </motion.div>
+    <section id="experience" className="py-20 bg-transparent">
+      <div className="container mx-auto px-6 max-w-5xl">
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div className="space-y-2">
+            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">Resume</h2>
+            <p className="text-[#023E8A] text-xs font-black uppercase tracking-[0.5em] opacity-80">Mobile Systems Engineer</p>
+          </div>
+          <button
+            onClick={handleDownloadResume}
+            className="flex items-center gap-2.5 px-6 py-3.5 bg-white/[0.03] border border-white/10 rounded-2xl text-white text-[11px] font-bold hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-md active:scale-95 shadow-xl shadow-black/20"
+          >
+            <Download className="w-4 h-4 text-[#023E8A]" /> Download CV
+          </button>
+        </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-cyan-500 transform md:-translate-x-1/2"></div>
+        {/* Main Glass Content */}
+        <div className="backdrop-blur-3xl bg-[#080808]/40 rounded-[3rem] border border-white/5 p-8 md:p-14 space-y-20 shadow-2xl relative overflow-hidden group">
 
-            {experiences.map((exp, index) => (
-              <div key={exp.id} className="relative flex mb-12 last:mb-0">
-                {/* Timeline dot */}
-                <div className="absolute left-6 md:left-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-lg transform md:-translate-x-1/2 z-10 mt-6"></div>
+          {/* Subtle Glow */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-[100px] pointer-events-none" />
 
-                {/* Content */}
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className={`ml-16 md:ml-0 flex-1 ${
-                    index % 2 === 0 
-                      ? "md:mr-auto md:pr-12" 
-                      : "md:ml-auto md:pl-12"
-                  }`}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
-                  >
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="p-2 bg-blue-600 rounded-lg">
-                        <Briefcase className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">
-                          {exp.title}
-                        </h3>
-                        <p className="text-blue-600 dark:text-blue-400 font-semibold mb-2">
-                          {exp.company}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        <span>
-                          {exp.startDate} - {exp.endDate}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        <span>{exp.location}</span>
-                      </div>
-                    </div>
-
-                    <ul className="space-y-2 mb-4">
-                      {exp.description.map((item, i) => (
-                        <li
-                          key={i}
-                          className="text-gray-600 dark:text-gray-300 text-sm flex items-start gap-2"
-                        >
-                          <span className="text-blue-600 dark:text-blue-400 mt-1">
-                            •
-                          </span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech) => {
-                        const hasLink = techLinks[tech];
-                        return (
-                          <span
-                            key={tech}
-                            onClick={() => handleTechClick(tech)}
-                            className={`px-3 py-1 text-xs font-medium rounded-full border transition-all duration-200 flex items-center gap-1 ${
-                              hasLink
-                                ? "bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:border-blue-300 dark:hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer"
-                                : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-600"
-                            }`}
-                          >
-                            {tech}
-                            {hasLink && <ExternalLink className="w-3 h-3" />}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </motion.div>
-                </motion.div>
+          {/* Profile & Location */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex items-center gap-3 text-gray-400">
+              <User className="w-10 h-10 text-blue-400" />
+              <h3 className="text-[11px] font-black uppercase tracking-widest">Profile</h3>
+            </div>
+            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div>
+                <p className="text-[10px] text-gray-500 font-black uppercase mb-2 tracking-widest">Mobile App Developer</p>
+                <p className="text-xl font-bold text-white tracking-tight">{personalInfo.name}</p>
+                <p className="text-gray-400 text-sm mt-1">{personalInfo.email}</p>
               </div>
-            ))}
+              <div>
+                <p className="text-[10px] text-gray-500 font-black uppercase mb-2 tracking-widest">Current Base</p>
+                <p className="text-xl font-bold text-gray-300 tracking-tight">{personalInfo.location}</p>
+                <p className="text-gray-400 text-sm mt-1">Available for Remote/On-site</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
+          {/* Experience - The Core of the Page */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex items-center gap-3 text-gray-400">
+              <Briefcase className="w-10 h-10 text-purple-400" />
+              <h3 className="text-[11px] font-black uppercase tracking-widest">Experience</h3>
+            </div>
+            <div className="md:col-span-2 space-y-12">
+              {experience.map((exp) => (
+                <div key={exp.id} className="group border-l border-white/5 pl-8 relative transition-all">
+                  <div className="absolute -left-[1px] top-0 h-8 w-[2px] bg-[#023E8A] opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-2">
+                    <div>
+                      <h4 className="text-2xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">{exp.title}</h4>
+                      <p className="text-[#023E8A] text-xs font-black uppercase mt-2 tracking-[0.2em]">{exp.company}</p>
+                    </div>
+                    <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full">{exp.period}</span>
+                  </div>
+                  <ul className="grid grid-cols-1 gap-y-3">
+                    {exp.bullets.map((bullet, idx) => (
+                      <li key={idx} className="flex items-center gap-3 text-gray-300 text-[14px] font-normal leading-relaxed">
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover:bg-blue-500/50 shrink-0 transition-colors" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+
+          {/* Credentials - Compact Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="flex items-center gap-3 text-gray-400">
+              <Award className="w-10 h-10  text-yellow-500" />
+              <h3 className="text-[11px] font-black uppercase tracking-widest">Credentials</h3>
+            </div>
+            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {certifications.map((cert, i) => (
+                <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between hover:bg-white/[0.05] transition-all cursor-default group/cert">
+                  <span className="text-sm font-bold text-gray-300 group-hover/cert:text-white transition-colors">{cert.title}</span>
+                  <span className="text-[10px] font-black text-gray-500 uppercase tracking-tighter">{cert.date}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

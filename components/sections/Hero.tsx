@@ -1,49 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-
-const roles = [
-  "Flutter Developer",
-  "Android & iOS Engineer",
-  "Cross-Platform App Specialist",
-  "UI/UX-Focused Mobile Developer",
-];
+import { Download, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentRole = roles[roleIndex];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < currentRole.length) {
-          setDisplayText(currentRole.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(displayText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, isDeleting ? 50 : 100);
-    
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, roleIndex]);
-
   const handleDownloadResume = () => {
-    // Create a temporary anchor element
     const link = document.createElement('a');
-    link.href = 'ehsanyaqoob-resume.pdf'; // Make sure to put your resume in the public folder
-    link.download = 'Resume.pdf';
+    link.href = '/ehsanyaqoob.pdf';
+    link.download = 'Ehsan_Yaqoob_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -52,126 +17,95 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent pt-20"
     >
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      {/* Resume Button - Top Right */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="absolute top-10 right-6 md:right-12 z-20"
+      >
+        <button
+          onClick={handleDownloadResume}
+          className="flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-sm font-medium text-white hover:bg-white/10 transition-all duration-300"
+        >
+          <Download className="w-4 h-4" />
+          Resume
+        </button>
+      </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.h1
-              className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              Hi, I'm Ehsan Yaqoob
-            </motion.h1>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
 
-            <div className="h-16 md:h-20 mb-8">
-              <h2 className="text-3xl md:text-4xl font-semibold text-gray-700 dark:text-gray-300">
-                <span className="inline-block min-w-[300px] md:min-w-[400px] text-left">
-                  {displayText}
-                  <span className="animate-pulse">|</span>
-                </span>
-              </h2>
+          {/* Left Side: Avatar */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative flex-shrink-0"
+          >
+            <div className="w-48 h-48 md:w-64 md:h-64 rounded-full p-1 bg-gradient-to-tr from-blue-500/20 to-transparent border border-white/10 shadow-2xl relative z-10 overflow-hidden">
+              <Image
+                src="/me.jpg"
+                alt="Ehsan Yaqoob"
+                fill
+                className="object-cover rounded-full p-2 transition-all duration-700"
+                priority
+              />
+            </div>
+            <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full -z-10 animate-pulse" />
+          </motion.div>
+
+          {/* Right Side: Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex-1 text-center md:text-left space-y-4"
+          >
+
+            {/* Line 1 — Name + handle + badge */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight whitespace-nowrap">
+                Ehsan Yaqoob
+              </h1>
+              <CheckCircle2 className="w-6 h-6 md:w-7 md:h-7 text-blue-500 fill-blue-500/10 shrink-0" />
+              <span className="text-lg md:text-xl text-gray-500 font-medium whitespace-nowrap">
+                @ehsanyaqoob
+              </span>
             </div>
 
-            <motion.p
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              Building high-performance mobile apps with Flutter for Android and
-              iOS. Experienced in scalable architectures, clean UI design, and
-              smooth cross-platform performance. Focused on delivering production-ready
-              solutions with intuitive user experiences.
-            </motion.p>
+            {/* Line 2 — Role */}
+            <h2 className="text-xl md:text-2xl font-bold text-blue-400 tracking-wide">
+              Mobile App Developer · Flutter & iOS
+            </h2>
 
-            <motion.div
-              className="flex flex-wrap gap-4 justify-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <Link
-                href="#projects"
-                className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                View My Work
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <button
-                onClick={handleDownloadResume}
-                className="group px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-full font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
-              >
-                Download Resume
-                <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </button>
-              <Link
-                href="#contact"
-                className="px-8 py-4 bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-full font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-blue-600 dark:hover:border-blue-400 hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
-                Get In Touch
-              </Link>
-            </motion.div>
+            {/* Description — 2 clean lines */}
+            <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed">
+              Crafting elegant, high-performance mobile experiences with Flutter and modern iOS tech.
+              Clean architecture, smooth animations, and production-grade code — built to last.
+            </p>
 
-            <motion.div
-              className="flex gap-6 justify-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.6 }}
-            >
-              <a
-                href="https://github.com/ehsanyaqoob"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-gray-700 dark:text-gray-300"
-              >
-                <Github className="w-6 h-6" />
-              </a>
-              <a
-                href="https://linkedin.com/in/ehsany"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-gray-700 dark:text-gray-300"
-              >
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a
-                href="mailto:ehsanyaqoob@gmail.com"
-                className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-gray-700 dark:text-gray-300"
-              >
-                <Mail className="w-6 h-6" />
-              </a>
-            </motion.div>
+            {/* Availability badge */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-gray-500 font-mono pt-1">
+              <span className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                Available for New Projects
+              </span>
+            </div>
+
           </motion.div>
         </div>
       </div>
 
+      {/* Scroll Indicator */}
       <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 1.5,
-          duration: 0.8,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:block"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
       >
-        <div className="w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
-          <motion.div
-            className="w-1.5 h-3 bg-blue-600 dark:bg-blue-400 rounded-full mt-2"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </div>
+        <div className="w-1 h-12 bg-gradient-to-b from-blue-500/50 to-transparent rounded-full" />
       </motion.div>
     </section>
   );

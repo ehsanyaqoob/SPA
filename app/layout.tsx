@@ -66,8 +66,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* Favicon ager change karna hy tu src mein osi file ka name do jo pulic mein parha hy */}
-        <link rel="icon" href="/spa2.png" type="image/jpeg" />
-        <link rel="shortcut icon" href="/spa2.png" type="image/jpeg" />
+        <link rel="icon" href="/spaicon.png" type="image/jpeg" />
+        <link rel="shortcut icon" href="/spaicon.png" type="image/jpeg" />
       </head>
       <body className={inter.className}>
         <ThemeProvider

@@ -87,16 +87,6 @@ export default function AllProjectsPage() {
                       <Github className="w-5 h-5" />
                     </a>
                   )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-white transition-colors"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                  )}
                 </div>
               </div>
             </motion.div>

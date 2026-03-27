@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Hero() {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
-    link.href = '/ehsanyaqoob.pdf';
+    link.href = '/ehsanyaqoobresume.pdf';
     link.download = 'Ehsan_Yaqoob_Resume.pdf';
     document.body.appendChild(link);
     link.click();

@@ -61,7 +61,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-b from-transparent to-[#023E8A]/5">
+    <section id="experience" className="py-20 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-5xl">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -78,7 +78,7 @@ export default function Experience() {
         </div>
 
         {/* Main Glass Content */}
-        <div className="backdrop-blur-3xl bg-[#080808]/40 rounded-[3rem] border border-white/5 p-8 md:p-14 space-y-20 shadow-2xl relative overflow-hidden group">
+        <div className="bg-transparent rounded-[3rem] border border-white/5 p-8 md:p-14 space-y-20 relative overflow-hidden group">
 
           {/* Subtle Glow */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-[100px] pointer-events-none" />

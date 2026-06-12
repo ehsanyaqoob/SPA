@@ -1,8 +1,9 @@
 "use client";
 
-import { Menu, X, Home, User, Briefcase, Mail, Code2, Layers } from "lucide-react";
+import { Menu, X, Home, User, Briefcase, Mail, Code2, Layers, Terminal as TerminalIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useScroll, motion, AnimatePresence } from "framer-motion";
+import TerminalOverlay from "./TerminalOverlay";
 
 const navItems = [
   { id: "01", name: "Home", href: "#home", icon: <Home className="w-4 h-4" /> },
@@ -15,6 +16,7 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -86,17 +88,33 @@ export default function Navbar() {
               {item.name}
             </a>
           ))}
+          <div className="w-px h-5 bg-white/10 mx-2" />
+          <button
+            onClick={() => setIsTerminalOpen(true)}
+            className="p-2 rounded-full text-gray-500 hover:text-green-400 hover:bg-white/10 transition-colors"
+            aria-label="Open Terminal"
+          >
+            <TerminalIcon className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Mobile Nav Toggle */}
         <div className="md:hidden flex items-center justify-between w-[240px] px-2">
             <span className="text-white text-xs font-black uppercase tracking-widest bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">EY Portfolio</span>
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-full text-white/50 hover:text-white transition-colors"
-            >
-                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            <div className="flex items-center gap-1">
+                <button
+                    onClick={() => setIsTerminalOpen(true)}
+                    className="p-2 rounded-full text-green-500/80 hover:text-green-400 transition-colors"
+                >
+                    <TerminalIcon className="w-4 h-4" />
+                </button>
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="p-2 rounded-full text-white/50 hover:text-white transition-colors"
+                >
+                    {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                </button>
+            </div>
         </div>
 
         {/* Mobile Menu */}
@@ -134,6 +152,7 @@ export default function Navbar() {
             )}
         </AnimatePresence>
       </motion.nav>
+      <TerminalOverlay isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-t from-[#023E8A]/10 to-transparent relative overflow-hidden">
+    <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
         
         {/* Header */}

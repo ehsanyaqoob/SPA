@@ -1,21 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  Rocket,
   Smartphone,
   Code2,
   Layers,
-  Zap,
-  ShieldCheck,
-  Cpu,
-  Globe,
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Clock,
-  Search
+  ShieldCheck
 } from "lucide-react";
 
 const technicalSkills = [
@@ -41,17 +31,9 @@ const technicalSkills = [
   }
 ];
 
-const softSkills = [
-  { name: "Communication", icon: <MessageSquare className="w-5 h-5" /> },
-  { name: "Team Collaboration", icon: <Users className="w-5 h-5" /> },
-  { name: "Problem Solving", icon: <Lightbulb className="w-5 h-5" /> },
-  { name: "Time Management", icon: <Clock className="w-5 h-5" /> },
-  { name: "Critical Thinking", icon: <Search className="w-5 h-5" /> },
-];
-
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-gradient-to-b from-blue-950/20 to-purple-950/20 relative overflow-hidden">
+    <section id="skills" className="py-24 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
         {/* Header */}

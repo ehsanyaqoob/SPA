@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Terminal } from "lucide-react";
+import TerminalOverlay from "./TerminalOverlay";
 
 export default function Footer() {
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const currentYear = new Date().getFullYear();
 
   const socials = [
@@ -38,6 +41,14 @@ export default function Footer() {
               <Icon className="w-5 h-5" />
             </motion.a>
           ))}
+          <motion.button
+            onClick={() => setIsTerminalOpen(true)}
+            whileHover={{ scale: 1.1, y: -2 }}
+            className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-green-400 hover:bg-white/10 hover:border-green-400/30 transition-all duration-300"
+            aria-label="Terminal"
+          >
+            <Terminal className="w-5 h-5" />
+          </motion.button>
         </div>
 
         {/* Bottom Line */}
@@ -45,6 +56,7 @@ export default function Footer() {
           © {currentYear} EH — BUILT WITH NEXT.JS
         </p>
       </div>
+      <TerminalOverlay isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
     </footer>
   );
 }

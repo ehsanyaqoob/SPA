@@ -23,10 +23,10 @@ export default function About() {
             className="md:text-right space-y-6 order-2 md:order-1"
           >
             <p className="text-gray-200 text-xl md:text-2xl font-medium leading-relaxed tracking-tight">
-              I'm a mobile app developer based in Islamabad. 3+ years building production apps — not side projects, real systems that real people use daily.
+              I&apos;m a mobile app developer based in Islamabad. 3+ years building production apps — not side projects, real systems that real people use daily.
             </p>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm md:ml-auto">
-              I've shipped production-ready code across both iOS and Android, building everything from government-grade enforcement tools to complex enterprise platforms.
+              I&apos;ve shipped production-ready code across both iOS and Android, building everything from government-grade enforcement tools to complex enterprise platforms.
             </p>
           </motion.div>
 
@@ -60,7 +60,7 @@ export default function About() {
               My core expertise lies in Flutter, Dart, and Swift, backed by a strong foundation in modern state management (Riverpod, GetX, Bloc) and robust data syncing (SwiftData, Hive, Firebase, Supabase).
             </p>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-              I don't just write code — I focus on the entire lifecycle. From architecting scalable offline-first databases to setting up seamless CI/CD pipelines, I prioritize clean architecture so the products I build are meant to last.
+              I don&apos;t just write code — I focus on the entire lifecycle. From architecting scalable offline-first databases to setting up seamless CI/CD pipelines, I prioritize clean architecture so the products I build are meant to last.
             </p>
             <div className="inline-block mt-2">
               <div className="px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
@@ -87,21 +87,21 @@ export default function About() {
             <div className="flex items-center gap-3 px-5 py-3 rounded-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all cursor-default">
               <span className="w-2 h-2 rounded-full bg-green-500" />
               <span className="text-sm font-bold text-gray-300">BSCS</span>
-              <span className="text-xs text-gray-500 hidden sm:inline">· Arid Uni '25</span>
+              <span className="text-xs text-gray-500 hidden sm:inline">· Arid Uni &apos;25</span>
             </div>
 
             {/* Logixsy Pill */}
             <div className="flex items-center gap-3 px-5 py-3 rounded-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all cursor-default">
               <span className="w-2 h-2 rounded-full bg-[#97B4D5]" />
               <span className="text-sm font-bold text-gray-300">Flutter Intern</span>
-              <span className="text-xs text-gray-500 hidden sm:inline">· Logixsy '23</span>
+              <span className="text-xs text-gray-500 hidden sm:inline">· Logixsy &apos;23</span>
             </div>
 
             {/* TechSol Pill */}
             <div className="flex items-center gap-3 px-5 py-3 rounded-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all cursor-default">
               <span className="w-2 h-2 rounded-full bg-[#97B4D5]" />
               <span className="text-sm font-bold text-gray-300">Mobile Dev</span>
-              <span className="text-xs text-gray-500 hidden sm:inline">· Tech Solutions '24</span>
+              <span className="text-xs text-gray-500 hidden sm:inline">· Tech Solutions &apos;24</span>
             </div>
 
             {/* NPF Pill (Current) */}

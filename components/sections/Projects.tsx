@@ -25,16 +25,10 @@ export default function Projects() {
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-t from-purple-950/20 to-blue-950/20">
+    <section id="projects" className="py-20 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
             Projects
           </h2>
@@ -42,18 +36,14 @@ export default function Projects() {
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             Building production-ready mobile applications that solve real-world problems.
           </p>
-        </motion.div>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {visibleProjects.map((project, index) => (
-            <motion.div
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative flex flex-col h-[480px] bg-[#0A0A0A] border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500/40 transition-all duration-500"
+              className="group relative flex flex-col h-[480px] bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-blue-500/40 transition-all duration-500"
             >
               {/* Overlay Link for the entire card (excluding buttons) */}
               <Link
@@ -78,7 +68,7 @@ export default function Projects() {
                   </div>
                 )}
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
               </div>
 
               {/* Bottom 50% - Content */}
@@ -170,18 +160,12 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* View More / Less Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12">
           {!showAll && (
             <Link
               href="/projects"
@@ -199,16 +183,10 @@ export default function Projects() {
               Show Less <ChevronUp className="w-4 h-4" />
             </button>
           )}
-        </motion.div>
+        </div>
 
         {/* GitHub Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7, duration: 0.6 }}
-          className="text-center mt-8"
-        >
+        <div className="text-center mt-8">
           <a
             href="https://github.com/ehsanyaqoob"
             target="_blank"
@@ -219,7 +197,7 @@ export default function Projects() {
             Explore More on GitHub
             <ArrowRight className="w-4 h-4" />
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -6,47 +6,45 @@ import Image from "next/image";
 import { GraduationCap, Briefcase } from "lucide-react";
 
 export default function About() {
-  const education = [
+  const timeline = [
     {
-      title: "Bachelor of Science in Computer Science",
-      institution: "Professional Bachelor Degree in BSCS",
-      year: "2025",
-      accent: "border-green-500/30 text-green-400"
-    },
-    {
-      title: "Mobile App Development Diploma",
-      institution: "Specialized Institute of Mobile Technologies ",
-      year: "2023 - 2024",
-      accent: "border-green-500/30 text-green-400"
-    }
-  ];
-
-  const experienceShort = [
-    {
-      title: "App Developer",
-      company: "National Police Foundation",
+      title: "Flutter & iOS Developer",
+      organization: "National Police Foundation",
       year: "2024 - Present",
-      accent: "border-purple-500/30 text-purple-400"
+      type: "experience",
+      icon: <Briefcase className="w-5 h-5 text-purple-400" />,
+      accent: "border-purple-500/30 group-hover:border-purple-500/50 text-purple-400"
     },
     {
       title: "Software Developer",
-      company: "Tech Solutions - Remote",
+      organization: "Tech Solutions - Remote",
       year: "2024",
-      accent: "border-purple-500/30 text-purple-400"
-    }
-    ,
+      type: "experience",
+      icon: <Briefcase className="w-5 h-5 text-purple-400" />,
+      accent: "border-purple-500/30 group-hover:border-purple-500/50 text-purple-400"
+    },
     {
       title: "Flutter Developer",
-      company: "Logixsy Technologies - Internship ",
+      organization: "Logixsy Technologies - Internship",
       year: "2023",
-      accent: "border-purple-500/30 text-purple-400"
+      type: "experience",
+      icon: <Briefcase className="w-5 h-5 text-purple-400" />,
+      accent: "border-purple-500/30 group-hover:border-purple-500/50 text-purple-400"
+    },
+    {
+      title: "Bachelor of Science in Computer Science",
+      organization: "PMAS Arid Agriculture University",
+      year: "2025",
+      type: "education",
+      icon: <GraduationCap className="w-5 h-5 text-green-400" />,
+      accent: "border-green-500/30 group-hover:border-green-500/50 text-green-400"
     }
   ];
 
   return (
     <section
       id="about"
-      className="py-20 bg-transparent relative overflow-hidden"
+      className="py-20 bg-gradient-to-b from-transparent to-blue-950/20 relative overflow-hidden"
     >
       <div className="container mx-auto px-6">
         {/* Centered Header */}
@@ -106,72 +104,46 @@ export default function About() {
               </h3>
               <div className="space-y-6 text-gray-300 text-lg leading-relaxed mb-8">
                 <p>
-                  By profession, I am a Mobile Engineer with 3+ years of applied experience
-                  in architecting, developing, and deploying mobile applications across
-                  Android and iOS ecosystems for both public and private sector clients.
+                  I'm a mobile app developer focused on turning complex problems into intuitive, high-performance applications that users love. With over 3 years of experience shipping production-ready apps across both iOS and Android, I've built everything from government-grade enforcement tools to sleek social platforms.
                 </p>
                 <p>
-                  My expertise is centered on Flutter & Dart, with a strong command over
-                  state management (GetX, Provider), networking (REST APIs, GraphQL, Firebase),
-                  authentication (OAuth2.0, JWT, social logins), and DevOps practices
-                  (Git, CI/CD, automated testing & deployment).
+                  My core expertise lies in Flutter, Dart, and Swift, backed by a strong foundation in modern state management (Riverpod, GetX, Bloc) and robust local/remote data syncing (SwiftData, Hive, Firebase, Supabase).
                 </p>
                 <p>
-                  I specialize in building scalable, modular, and performance-optimized
-                  applications by applying Clean Architecture principles, performance
-                  profiling, and security hardening.
+                  I don't just write code — I focus on the entire lifecycle. From architecting scalable offline-first databases to setting up seamless CI/CD pipelines, I prioritize clean architecture and maintainability so the products I build are meant to last.
                 </p>
                 <p className="text-gray-200 leading-relaxed font-medium bg-blue-500/5 px-4 py-3 rounded-lg border-l-4 border-blue-500">
-                  🚀 <strong>Currently learning native iOS development</strong> to expand my expertise
-                  and become a full-stack iOS developer, complementing my cross-platform skills
-                  with deep native platform knowledge.
+                  🚀 <strong>Currently building native iOS apps</strong> — Niyyah, a daily Salah tracker, coming to App Store 2026.
                 </p>
               </div>
 
-              {/* Education & Experience Columns */}
-              <div className="grid md:grid-cols-2 gap-8 mt-12">
-                {/* Education Column */}
-                <div>
-                  <div className="flex items-center gap-2 mb-6">
-                    <GraduationCap className="w-6 h-6 text-green-400" />
-                    <h4 className="text-xl font-bold text-green-400">Education</h4>
-                  </div>
-                  <div className="space-y-3">
-                    {education.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{ y: -5 }}
-                        className="p-5 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-green-500/30 transition-all duration-300 group"
-                      >
-                        <h5 className="text-white font-bold mb-1 group-hover:text-green-400 transition-colors">
+              {/* Single Column Timeline */}
+              <div className="mt-12">
+                <h4 className="text-2xl font-bold text-white mb-8">Journey</h4>
+                <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/10 before:to-transparent">
+                  {timeline.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover={{ scale: 1.02 }}
+                      className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+                    >
+                      {/* Timeline Icon */}
+                      <div className={`flex items-center justify-center w-10 h-10 rounded-full border-4 border-[#0a0a0a] bg-white/10 backdrop-blur-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow-xl z-10 ${item.type === 'education' ? 'shadow-green-500/20 text-green-400' : 'shadow-purple-500/20 text-purple-400'}`}>
+                        {item.icon}
+                      </div>
+
+                      {/* Card Content */}
+                      <div className={`w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-5 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 transition-all duration-300 ${item.accent}`}>
+                        <h5 className={`font-bold mb-1 transition-colors ${item.type === 'education' ? 'text-green-400' : 'text-purple-400'}`}>
                           {item.title}
                         </h5>
-                        <p className="text-gray-400 text-sm mb-0">{item.institution}</p>
-                        <span className="text-green-500/80 text-xs font-bold mt-2 block">{item.year}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Experience Column */}
-                <div>
-                  <div className="flex items-center gap-2 mb-6">
-                    <Briefcase className="w-6 h-6 text-purple-400" />
-                    <h4 className="text-xl font-bold text-purple-400">Experience</h4>
-                  </div>
-                  <div className="space-y-3">
-                    {experienceShort.map((item, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{ y: -5 }}
-                        className="p-5 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all duration-300 group"
-                      >
-                        <h5 className="text-white font-bold mb-0 group-hover:text-purple-400 transition-colors">{item.title}</h5>
-                        <p className="text-gray-400 text-sm mb-0">{item.company}</p>
-                        <span className="text-purple-500/80 text-xs font-bold mt-2 block">{item.year}</span>
-                      </motion.div>
-                    ))}
-                  </div>
+                        <p className="text-gray-400 text-sm mb-0">{item.organization}</p>
+                        <span className={`text-xs font-bold mt-2 block opacity-80 ${item.type === 'education' ? 'text-green-500' : 'text-purple-500'}`}>
+                          {item.year}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>

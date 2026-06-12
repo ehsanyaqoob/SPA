@@ -25,38 +25,50 @@ export default function Experience() {
       title: "Mobile App Developer",
       company: "National Police Foundation",
       period: "Apr 2024 — Present",
-      bullets: ["Architecting scalable mobile solutions", "Deploying Android & iOS apps", "Applying Clean Architecture", "Hardening security protocols"]
+      bullets: [
+        "Built and deployed Digital Sergeant E-Challan system to 500+ Islamabad Traffic Police officers",
+        "ML Kit OCR for real-time license plate scanning",
+        "Offline-first architecture with REST API sync",
+        "Bloc state management, Clean Architecture, production CI/CD"
+      ]
     },
     {
       id: 2,
       title: "Mobile Developer",
       company: "Tech Solutions",
       period: "Dec 2023 — Mar 2024",
-      bullets: ["Developing cross-platform apps", "Optimizing app performance", "Integrating REST & Firebase", "Handling real-time data"]
+      bullets: [
+        "Built and maintained cross-platform Flutter apps for client projects",
+        "Integrated REST APIs and Firebase Auth across multiple production builds"
+      ]
     },
     {
       id: 3,
       title: "Flutter Developer",
       company: "Logixsy Tech",
       period: "Jan 2023 — Oct 2023",
-      bullets: ["Building modular UI components", "Handling complex Auth flows", "Implementing Flutter best practices", "Managing dev lifecycle"]
+      bullets: [
+        "First professional Flutter role — learned production-grade architecture and clean code under a real team",
+        "Worked across auth flows, modular UI, and app lifecycle management"
+      ]
     }
   ];
 
   const certifications = [
     { title: "Flutter Certification", date: "2023" },
     { title: "SOLC MasterClass", date: "2024" },
-    { title: "iOS App Development", date: "2025 - in progress" } 
+    { title: "Supabase Database & Auth", date: "2025" },
+    { title: "iOS App Development", date: "2026 · Ongoing" } 
   ];
 
   return (
-    <section id="experience" className="py-20 bg-transparent">
+    <section id="experience" className="py-20 bg-gradient-to-b from-transparent to-[#023E8A]/5">
       <div className="container mx-auto px-6 max-w-5xl">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div className="space-y-2">
             <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">Resume</h2>
-            <p className="text-[#023E8A] text-xs font-black uppercase tracking-[0.5em] opacity-80">Mobile Systems Engineer</p>
+            <p className="text-[#023E8A] text-xs font-black uppercase tracking-[0.5em] opacity-80">Mobile App Developer · Flutter & iOS</p>
           </div>
           <button
             onClick={handleDownloadResume}

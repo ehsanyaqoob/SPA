@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-transparent relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-t from-[#023E8A]/10 to-transparent relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-5xl relative z-10">
         
         {/* Header */}
@@ -75,6 +75,9 @@ export default function Contact() {
                 <a href="https://linkedin.com/in/ehsany" target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-blue-500/50 transition-all text-gray-400 hover:text-white">
                    <Linkedin className="w-5 h-5" />
                 </a>
+                <a href="https://x.com/iamehsanyaqoob" target="_blank" className="p-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-blue-500/50 transition-all text-gray-400 hover:text-white">
+                   <svg viewBox="0 0 24 24" aria-hidden="true" className="w-5 h-5 fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 22.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 5.961H5.078z"></path></svg>
+                </a>
              </div>
           </div>
 
@@ -117,7 +120,7 @@ export default function Contact() {
                          onChange={handleChange}
                          required
                          rows={4}
-                         placeholder="Let's discuss something amazing..."
+                         placeholder="Have a project or opportunity? Let's talk."
                          className="w-full bg-transparent border-b border-white/10 pb-4 text-white text-lg font-medium focus:border-[#023E8A] outline-none transition-colors resize-none placeholder:text-gray-800"
                       />
                    </div>

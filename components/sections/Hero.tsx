@@ -82,7 +82,7 @@ export default function Hero() {
 
             {/* Description — 2 clean lines */}
             <p className="text-base md:text-lg text-gray-400 max-w-xl leading-relaxed">
-              Crafting elegant, high-performance mobile experiences with Flutter and modern iOS tech.
+              I build mobile apps that ship.
               Clean architecture, smooth animations, and production-grade code — built to last.
             </p>
 

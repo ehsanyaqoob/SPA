@@ -22,22 +22,22 @@ const technicalSkills = [
   {
     title: "Core Mobile",
     icon: <Smartphone className="w-5 h-5" />,
-    skills: ["Flutter", "Dart", "Swift (iOS)", "Kotlin (Android)"],
+    skills: ["Flutter", "Dart", "Swift (iOS)"],
   },
   {
     title: "Frameworks & State",
     icon: <Code2 className="w-5 h-5" />,
-    skills: ["SwiftUI", "Swift", "GetX", "Provider", "Bloc"],
+    skills: ["SwiftUI", "Riverpod", "Bloc", "GetX", "Provider"],
   },
   {
     title: "Backend & Data",
     icon: <Layers className="w-5 h-5" />,
-    skills: ["Firebase", "Node.js", "REST APIs", "Supabase", "PostgreSQL"],
+    skills: ["Firebase", "Supabase", "SwiftData", "Hive", "REST APIs"],
   },
   {
     title: "Architecture & Ops",
     icon: <ShieldCheck className="w-5 h-5" />,
-    skills: ["Clean Architecture", "CI/CD", "Git", "GitHub Actions", "Docker"],
+    skills: ["Clean Architecture", "CI/CD", "Git", "GitHub Actions"],
   }
 ];
 
@@ -53,7 +53,7 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState<"tech" | "soft">("tech");
 
   return (
-    <section id="skills" className="py-24 bg-transparent relative overflow-hidden">
+    <section id="skills" className="py-24 bg-gradient-to-b from-blue-950/20 to-purple-950/20 relative overflow-hidden">
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
 
         {/* Header */}

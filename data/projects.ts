@@ -8,9 +8,58 @@ export interface Project {
   techStack: string[];
   githubUrl: string;
   images?: string[];
+  appStoreUrl?: string;
+  playStoreUrl?: string;
 }
 
 export const projects: Project[] = [
+  {
+    id: "dsa",
+    title: "Digital Sergeant App (DSA)",
+    description: "A government-grade mobile enforcement platform for Islamabad Traffic Police enabling real-time digital challan issuance, license verification, and violation tracking.",
+    problem: "Traffic officers issued challans entirely on paper — a slow, error-prone process with no real-time database lookup, no digital trail, and significant delays in violation records reaching central systems. Officers averaged 5+ minutes per challan with frequent data entry errors.",
+    solution: "Engineered a production Flutter app with ML Kit OCR for instant QR and license plate scanning, Firebase for live data sync across all field devices, Google Maps for geolocation tagging of violations, and a REST API backend integrated with police central databases. Delivered under Clean Architecture with GetX state management.",
+    impact: "Deployed to 500+ active field officers across Islamabad. Reduced challan issuance time from 5 minutes to under 30 seconds. Achieved 100% data accuracy through automated OCR and real-time Firebase sync, eliminating manual transcription errors entirely.",
+    techStack: ["Flutter", "Firebase", "REST API", "Google Maps", "ML Kit OCR", "GetX"],
+    githubUrl: "https://github.com/ehsanyaqoob/Digital-Sergeant-Showcase",
+    images: ["/DSA Frame one.png", "/DSA Frame two.png", "/DSA Frame three.png", "/DSA Frame four.png"]
+  },
+  {
+    id: "niyyah",
+    title: "Niyyah",
+    description: "Native iOS Salah tracker. GPS prayer times, streak tracking, monthly heatmap. SwiftUI + SwiftData + Supabase.",
+    problem: "Existing prayer tracking apps were cluttered, ad-heavy, and lacked a modern, premium iOS-native feel.",
+    solution: "Developed natively with Swift and SwiftData for seamless offline persistence. Used SwiftUI to create a minimalist, distraction-free user experience.",
+    impact: "Currently preparing for App Store launch (2026). Re-architected personal habits tracking with a focus on privacy and offline-first usage.",
+    techStack: ["Swift", "SwiftUI", "SwiftData"],
+    githubUrl: "",
+    appStoreUrl: "#",
+    images: ["/niyyah-2.png", "/niyyah-1.png"]
+  },
+  {
+    id: "mizan",
+    title: "Mizan",
+    description: "Freelancer finance tracker for Pakistani market. PKR/USD conversion, FBR tax calculation, PDF export, offline-first.",
+    problem: "Users needed a reliable, fast app for community engagement with seamless offline capabilities.",
+    solution: "Built using Flutter and Clean Architecture, utilizing robust state management and local caching.",
+    impact: "Successfully shipped to the Play Store, providing real-world value to active users.",
+    techStack: ["Flutter", "Dart", "Clean Architecture"],
+    githubUrl: "",
+    playStoreUrl: "#",
+    images: ["/mizan-dashboard.png"]
+  },
+  {
+    id: "diary",
+    title: "Diary",
+    description: "A secure finance and expense tracker focusing on local-first storage, privacy, and seamless sync, available on the Play Store.",
+    problem: "Privacy-focused users wanted an expense tracking experience that doesn't rely entirely on cloud storage.",
+    solution: "Implemented using Flutter and Hive for secure offline-first storage, ensuring user financial entries remain private.",
+    impact: "Successfully deployed to the Play Store, achieving positive user retention and strong engagement.",
+    techStack: ["Flutter", "Hive", "Secure Storage"],
+    githubUrl: "",
+    playStoreUrl: "#",
+    images: [""]
+  },
   {
     id: "padel-app",
     title: "Padel App",
@@ -32,17 +81,6 @@ export const projects: Project[] = [
     techStack: ["Flutter", "AR Core", "Three.js", "MongoDB"],
     githubUrl: "https://github.com/ehsanyaqoob/funica",
     images: ["/funicamock.png", "/Funica Frame two.png", "/Funica Frame three.png", "/Funica Frame four.png", "/Funica Frame five.png", "/Funica Frame six.png"]
-  },
-  {
-    id: "dsa",
-    title: "Digital Sergeant App (DSA)",
-    description: "A government-grade mobile enforcement platform for Islamabad Traffic Police enabling real-time digital challan issuance, license verification, and violation tracking.",
-    problem: "Traffic officers issued challans entirely on paper — a slow, error-prone process with no real-time database lookup, no digital trail, and significant delays in violation records reaching central systems. Officers averaged 5+ minutes per challan with frequent data entry errors.",
-    solution: "Engineered a production Flutter app with ML Kit OCR for instant QR and license plate scanning, Firebase for live data sync across all field devices, Google Maps for geolocation tagging of violations, and a REST API backend integrated with police central databases. Delivered under Clean Architecture with GetX state management.",
-    impact: "Deployed to 500+ active field officers across Islamabad. Reduced challan issuance time from 5 minutes to under 30 seconds. Achieved 100% data accuracy through automated OCR and real-time Firebase sync, eliminating manual transcription errors entirely.",
-    techStack: ["Flutter", "Firebase", "REST API", "Google Maps", "ML Kit OCR", "GetX"],
-    githubUrl: "https://github.com/ehsanyaqoob/Digital-Sergeant-Showcase",
-    images: ["/DSA Frame one.png", "/DSA Frame two.png", "/DSA Frame three.png", "/DSA Frame four.png"]
   },
   {
     id: "dastarkhwan",

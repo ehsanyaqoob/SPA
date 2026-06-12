@@ -41,8 +41,6 @@ export default function Projects() {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-600 mx-auto rounded-full mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
             Building production-ready mobile applications that solve real-world problems.
-            Each project showcases my expertise in Flutter development, clean architecture,
-            and delivering user-centric solutions.
           </p>
         </motion.div>
 

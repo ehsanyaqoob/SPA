@@ -46,7 +46,7 @@ export const projects: Project[] = [
     techStack: ["Flutter", "Dart", "Clean Architecture"],
     githubUrl: "",
     playStoreUrl: "#",
-    images: ["/mizan-dashboard.png"]
+    images: []
   },
   {
     id: "diary",

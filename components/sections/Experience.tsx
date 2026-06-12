@@ -22,7 +22,7 @@ export default function Experience() {
   const experience = [
     {
       id: 1,
-      title: "Mobile App Developer",
+      title: "Flutter & iOS Developer",
       company: "National Police Foundation",
       period: "Apr 2024 — Present",
       bullets: [
@@ -38,8 +38,8 @@ export default function Experience() {
       company: "Tech Solutions",
       period: "Dec 2023 — Mar 2024",
       bullets: [
-        "Built and maintained cross-platform Flutter apps for client projects",
-        "Integrated REST APIs and Firebase Auth across multiple production builds"
+        "Built and maintained Flutter apps for 3 client projects",
+        "Integrated Firebase Auth, REST APIs, and real-time data sync"
       ]
     },
     {
@@ -56,7 +56,6 @@ export default function Experience() {
 
   const certifications = [
     { title: "Flutter Certification", date: "2023" },
-    { title: "SOLC MasterClass", date: "2024" },
     { title: "Supabase Database & Auth", date: "2025" },
     { title: "iOS App Development", date: "2026 · Ongoing" } 
   ];

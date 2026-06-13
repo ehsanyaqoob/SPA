@@ -23,7 +23,7 @@ export default function About() {
             className="md:text-right space-y-6 order-2 md:order-1"
           >
             <p className="text-gray-200 text-xl md:text-2xl font-medium leading-relaxed tracking-tight">
-              I&apos;m a mobile app developer based in Islamabad. 3+ years building production apps — not side projects, real systems that real people use daily.
+              I&apos;m a mobile app developer based in Islamabad. 3+ years building production apps — from government-grade enforcement tools to consumer iOS products.
             </p>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm md:ml-auto">
               I&apos;ve shipped production-ready code across both iOS and Android, building everything from government-grade enforcement tools to complex enterprise platforms.
@@ -60,7 +60,7 @@ export default function About() {
               My core expertise lies in Flutter, Dart, and Swift, backed by a strong foundation in modern state management (Riverpod, GetX, Bloc) and robust data syncing (SwiftData, Hive, Firebase, Supabase).
             </p>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
-              I don&apos;t just write code — I focus on the entire lifecycle. From architecting scalable offline-first databases to setting up seamless CI/CD pipelines, I prioritize clean architecture so the products I build are meant to last.
+              I focus on the entire lifecycle — from architecting scalable offline-first databases to setting up seamless CI/CD pipelines. Clean architecture, built to ship and scale.
             </p>
             <div className="inline-block mt-2">
               <div className="px-5 py-2.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest backdrop-blur-md">

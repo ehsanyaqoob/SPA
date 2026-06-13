@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Briefcase, Download, Award } from "lucide-react";
+import { Download, MapPin, Briefcase, Award, CheckCircle2, Navigation } from "lucide-react";
 
 export default function Experience() {
   const handleDownloadResume = () => {
@@ -13,43 +13,47 @@ export default function Experience() {
     document.body.removeChild(link);
   };
 
-  const personalInfo = {
-    name: "Ehsan Yaqoob",
-    email: "ehsanyaqoob07.@gmail.com",
-    location: "Islamabad, Pakistan"
-  };
-
   const experience = [
     {
-      id: 1,
+      id: "npf",
       title: "Flutter & iOS Developer",
       company: "National Police Foundation",
       period: "Apr 2024 — Present",
+      colSpan: "lg:col-span-7",
+      color: "from-blue-500/20 to-cyan-500/5",
       bullets: [
         "Built and deployed Digital Sergeant E-Challan system to 500+ Islamabad Traffic Police officers",
-        "ML Kit OCR for real-time license plate scanning",
-        "Offline-first architecture with REST API sync",
-        "Bloc state management, Clean Architecture, production CI/CD"
+        "Implemented ML Kit OCR for real-time, low-latency license plate scanning",
+        "Architected an offline-first data layer with background REST API synchronization",
+        "Maintained Bloc state management and Clean Architecture for enterprise-grade scalability"
       ]
     },
     {
-      id: 2,
+      id: "techsol",
       title: "Mobile Developer",
       company: "Tech Solutions",
       period: "Dec 2023 — Mar 2024",
+      colSpan: "lg:col-span-5",
+      color: "from-purple-500/20 to-pink-500/5",
       bullets: [
-        "Built and maintained Flutter apps for 3 client projects",
-        "Integrated Firebase Auth, REST APIs, and real-time data sync"
+        "Built scalable Flutter applications, prioritizing modular architecture",
+        "Integrated Firebase Auth, Firestore, and complex REST APIs",
+        "Implemented robust state management using Riverpod and Provider for 60fps UI",
+        "Collaborated with backend engineers to translate complex business logic"
       ]
     },
     {
-      id: 3,
+      id: "logixsy",
       title: "Flutter Developer",
       company: "Logixsy Tech",
       period: "Jan 2023 — Oct 2023",
+      colSpan: "lg:col-span-8",
+      color: "from-green-500/20 to-emerald-500/5",
       bullets: [
-        "First professional Flutter role — learned production-grade architecture and clean code under a real team",
-        "Worked across auth flows, modular UI, and app lifecycle management"
+        "Developed cross-platform mobile applications from scratch adhering to SOLID principles",
+        "Architected secure user authentication flows and local secure storage caching",
+        "Optimized legacy codebases, reducing app bundle sizes significantly",
+        "Participated in Agile workflows, code reviews, and sprint planning"
       ]
     }
   ];
@@ -61,97 +65,136 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-transparent relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-5xl">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="space-y-2">
-            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">Resume</h2>
-            <p className="text-[#023E8A] text-xs font-black uppercase tracking-[0.5em] opacity-80">Mobile App Developer · Flutter & iOS</p>
-          </div>
-          <button
-            onClick={handleDownloadResume}
-            className="flex items-center gap-2.5 px-6 py-3.5 bg-white/[0.03] border border-white/10 rounded-2xl text-white text-[11px] font-bold hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-md active:scale-95 shadow-xl shadow-black/20"
-          >
-            <Download className="w-4 h-4 text-[#023E8A]" /> Download CV
-          </button>
+    <section id="experience" className="py-12 md:py-16 bg-transparent relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-6xl">
+        
+        {/* Header */}
+        <div className="mb-8">
+          <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-4">
+            Experience
+          </h2>
+          <div className="w-24 h-1.5 bg-blue-500 rounded-full" />
         </div>
 
-        {/* Main Glass Content */}
-        <div className="bg-transparent rounded-[3rem] border border-white/5 p-8 md:p-14 space-y-20 relative overflow-hidden group">
-
-          {/* Subtle Glow */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/5 blur-[100px] pointer-events-none" />
-
-          {/* Profile & Location */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-center gap-3 text-gray-400">
-              <User className="w-10 h-10 text-blue-400" />
-              <h3 className="text-[11px] font-black uppercase tracking-widest">Profile</h3>
-            </div>
-            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {/* BENTO GRID (The entire grid is a group to enable the sibling-dimming hover effect) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 group/bento">
+          
+          {/* TILE 1: Profile & Resume (Large) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="col-span-1 md:col-span-2 lg:col-span-8 relative overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/5 p-6 md:p-8 hover:border-white/20 transition-all duration-500 group-hover/bento:opacity-50 hover:!opacity-100"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-50" />
+            <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
-                <p className="text-[10px] text-gray-500 font-black uppercase mb-2 tracking-widest">Mobile App Developer</p>
-                <p className="text-xl font-bold text-white tracking-tight">{personalInfo.name}</p>
-                <p className="text-gray-400 text-sm mt-1">{personalInfo.email}</p>
+                <p className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-4">Mobile App Developer</p>
+                <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-4 leading-tight">
+                  Ehsan Yaqoob
+                </h3>
+                <p className="text-gray-400 text-lg max-w-lg leading-relaxed">
+                  Building production-ready, high-performance mobile applications with Flutter and iOS. Focused on clean architecture, beautiful UI, and offline-first experiences.
+                </p>
               </div>
-              <div>
-                <p className="text-[10px] text-gray-500 font-black uppercase mb-2 tracking-widest">Current Base</p>
-                <p className="text-xl font-bold text-gray-300 tracking-tight">{personalInfo.location}</p>
-                <p className="text-gray-400 text-sm mt-1">Available for Remote/On-site</p>
+              <div className="mt-12">
+                <button
+                  onClick={handleDownloadResume}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10"
+                >
+                  <Download className="w-4 h-4" /> 
+                  Download Resume
+                </button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-
-          {/* Experience - The Core of the Page */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-center gap-3 text-gray-400">
-              <Briefcase className="w-10 h-10 text-purple-400" />
-              <h3 className="text-[11px] font-black uppercase tracking-widest">Experience</h3>
+          {/* TILE 2: The Radar / Location */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="col-span-1 md:col-span-2 lg:col-span-4 relative overflow-hidden rounded-[2rem] bg-[#0A0A0A] border border-white/5 p-8 flex flex-col items-center justify-center min-h-[300px] hover:border-white/20 transition-all duration-500 group-hover/bento:opacity-50 hover:!opacity-100"
+          >
+            {/* Radar Animation */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-32 h-32 border border-blue-500/20 rounded-full absolute animate-[ping_3s_linear_infinite]" />
+              <div className="w-64 h-64 border border-blue-500/10 rounded-full absolute animate-[ping_4s_linear_infinite]" />
+              <div className="w-96 h-96 border border-blue-500/5 rounded-full absolute" />
             </div>
-            <div className="md:col-span-2 space-y-12">
-              {experience.map((exp) => (
-                <div key={exp.id} className="group border-l border-white/5 pl-8 relative transition-all">
-                  <div className="absolute -left-[1px] top-0 h-8 w-[2px] bg-[#023E8A] opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                  <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-2">
-                    <div>
-                      <h4 className="text-2xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">{exp.title}</h4>
-                      <p className="text-[#023E8A] text-xs font-black uppercase mt-2 tracking-[0.2em]">{exp.company}</p>
-                    </div>
-                    <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full">{exp.period}</span>
+            
+            <div className="relative z-10 flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-blue-500/10 rounded-full border border-blue-500/30 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+                <Navigation className="w-8 h-8 text-blue-400" />
+              </div>
+              <p className="text-gray-500 text-xs font-bold uppercase tracking-widest mb-2">Current Base</p>
+              <h3 className="text-2xl font-black text-white tracking-tight">Islamabad, PK</h3>
+              <a href="mailto:ehsanyaqoob07@gmail.com" className="mt-4 flex items-center gap-2 px-4 py-1.5 bg-green-500/10 border border-green-500/20 rounded-full hover:bg-green-500/20 transition-colors cursor-pointer active:scale-95 group">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-green-400 text-xs font-bold uppercase tracking-widest group-hover:text-green-300 transition-colors">Available for Work</span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* EXPERIENCE TILES */}
+          {experience.map((exp, idx) => (
+            <motion.div
+              key={exp.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 * (idx + 1) }}
+              className={`md:col-span-2 ${exp.colSpan} relative overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/5 p-8 md:p-10 hover:border-white/20 transition-all duration-500 group-hover/bento:opacity-50 hover:!opacity-100 hover:-translate-y-1`}
+            >
+              <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${exp.color} blur-[100px] opacity-50`} />
+              
+              <div className="relative z-10">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight mb-2">{exp.title}</h3>
+                    <p className="text-blue-400 font-bold tracking-wide">{exp.company}</p>
                   </div>
-                  <ul className="grid grid-cols-1 gap-y-3">
-                    {exp.bullets.map((bullet, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-gray-300 text-[14px] font-normal leading-relaxed">
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500/30 group-hover:bg-blue-500/50 shrink-0 transition-colors" />
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-full inline-flex self-start sm:self-auto">
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{exp.period}</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {exp.bullets.map((bullet, bIdx) => (
+                    <div key={bIdx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-gray-600 shrink-0 mt-0.5" />
+                      <p className="text-gray-300 text-sm md:text-base leading-relaxed">{bullet}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* TILE 6: Credentials (Bottom Right) */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="col-span-1 md:col-span-2 lg:col-span-4 relative overflow-hidden rounded-[2rem] bg-white/[0.02] border border-white/5 p-8 md:p-10 flex flex-col justify-center hover:border-white/20 transition-all duration-500 group-hover/bento:opacity-50 hover:!opacity-100"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <Award className="w-8 h-8 text-yellow-500" />
+              <h3 className="text-2xl font-black text-white tracking-tight">Credentials</h3>
+            </div>
+            
+            <div className="space-y-4">
+              {certifications.map((cert, idx) => (
+                <div key={idx} className="flex items-center justify-between p-4 bg-white/5 border border-white/5 rounded-xl hover:bg-white/10 transition-colors">
+                  <span className="text-sm font-bold text-gray-300">{cert.title}</span>
+                  <span className="text-xs font-black text-gray-500 uppercase tracking-widest">{cert.date}</span>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-
-          {/* Credentials - Compact Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-center gap-3 text-gray-400">
-              <Award className="w-10 h-10  text-yellow-500" />
-              <h3 className="text-[11px] font-black uppercase tracking-widest">Credentials</h3>
-            </div>
-            <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {certifications.map((cert, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-between hover:bg-white/[0.05] transition-all cursor-default group/cert">
-                  <span className="text-sm font-bold text-gray-300 group-hover/cert:text-white transition-colors">{cert.title}</span>
-                  <span className="text-[10px] font-black text-gray-500 uppercase tracking-tighter">{cert.date}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

@@ -55,7 +55,7 @@ export default function TerminalOverlay({ isOpen, onClose }: { isOpen: boolean; 
       return;
     }
 
-    let output: React.ReactNode = <div className="text-red-400">Command not found: {cmd}. Type 'help' for a list of commands.</div>;
+    let output: React.ReactNode = <div className="text-red-400">Command not found: {cmd}. Type &apos;help&apos; for a list of commands.</div>;
 
     if (cmd === "help") {
       output = (
@@ -68,7 +68,7 @@ export default function TerminalOverlay({ isOpen, onClose }: { isOpen: boolean; 
         </div>
       );
     } else if (cmd === "whoami") {
-      output = <div className="text-gray-300 mt-2">Ehsan Yaqoob — Mobile App Developer (Flutter & iOS). Building production-ready applications that real people use daily.</div>;
+      output = <div className="text-gray-300 mt-2">Ehsan Yaqoob — Mobile App Developer (Flutter & iOS). 3+ years shipping production apps across government, enterprise, and consumer platforms.</div>;
     } else if (cmd === "skills" || cmd === "cat skills.txt") {
       output = <div className="text-gray-300 mt-2 leading-relaxed">► Core: Flutter, Dart, Swift (iOS)<br/>► State: Riverpod, Bloc, GetX, Provider<br/>► Backend: Firebase, Supabase, SwiftData, REST APIs<br/>► Ops: CI/CD, GitHub Actions, Clean Architecture</div>;
     } else if (cmd === "contact") {

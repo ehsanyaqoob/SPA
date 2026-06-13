@@ -17,7 +17,7 @@ export default function Projects() {
     e.stopPropagation();
     toast({
       title: "Coming Soon!",
-      description: `The ${platform} link is not live yet. Stay tuned!`,
+      description: "Shipping to store, will update soon!",
     });
   };
 
@@ -25,10 +25,10 @@ export default function Projects() {
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-20 bg-transparent relative overflow-hidden">
+    <section id="projects" className="py-12 md:py-16 bg-transparent relative overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-blue-400 dark:to-cyan-400 bg-clip-text text-transparent">
             Projects
           </h2>

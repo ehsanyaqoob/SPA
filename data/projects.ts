@@ -81,7 +81,7 @@ export const projects: Project[] = [
     techStack: ["Flutter", "Dart", "Clean Architecture", "Hive NoSQL", "PDF Generation"],
     githubUrl: "",
     playStoreUrl: "#",
-    images: []
+    images: ["/mizanframeone.png", "/mizanframetwo.png"]
   },
   {
     id: "diary",

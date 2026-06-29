@@ -58,7 +58,7 @@ export const projects: Project[] = [
     impact: "Currently preparing for App Store launch. Re-architected personal habits tracking with a strict focus on privacy and offline-first usage, resulting in a buttery-smooth 120hz scrolling experience across all devices.",
     techStack: ["Swift", "SwiftUI", "SwiftData", "CoreLocation", "LocalNotifications"],
     githubUrl: "",
-    appStoreUrl: "#",
+    appStoreUrl: "https://apps.apple.com/pk/app/niyyah-daily-prayer-tracker/id6780566802",
     images: ["/niyyah-2.png", "/niyyah-1.png"]
   },
   {
@@ -80,6 +80,7 @@ export const projects: Project[] = [
     impact: "Successfully shipped to the Play Store, providing real-world utility to active users. Eliminated the need for complex Excel spreadsheets for dozens of local freelancers.",
     techStack: ["Flutter", "Dart", "Clean Architecture", "Hive NoSQL", "PDF Generation"],
     githubUrl: "",
+    appStoreUrl: "https://apps.apple.com/us/app/mizan-freelancer-ledger/id6780952991",
     playStoreUrl: "#",
     images: ["/mizanframeone.png", "/mizanframetwo.png"]
   },

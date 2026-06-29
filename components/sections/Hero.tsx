@@ -20,8 +20,8 @@ const bootSequence = [
 ];
 
 const storeLinks: Record<string, { url: string; label: string }> = {
-  niyyah: { url: "#", label: "Shipping to store, will update soon!" },
-  mizan: { url: "#", label: "Shipping to store, will update soon!" },
+  niyyah: { url: "https://apps.apple.com/pk/app/niyyah-daily-prayer-tracker/id6780566802", label: "Live on App Store" },
+  mizan: { url: "https://apps.apple.com/us/app/mizan-freelancer-ledger/id6780952991", label: "Play Store version in Closed Testing!" },
 };
 
 export default function Hero() {

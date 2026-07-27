@@ -153,7 +153,7 @@ export default function Hero() {
                 Mobile App Developer · Flutter &amp; iOS
               </h2>
               <p className="text-sm text-gray-500 leading-relaxed max-w-sm mx-auto lg:mx-0">
-                3+ years shipping production apps — from government-grade enforcement tools to consumer iOS products.
+                2+ years shipping production apps - from a government enforcement system to consumer iOS products.
               </p>
               <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 pt-2">
                 <a

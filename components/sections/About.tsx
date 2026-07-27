@@ -23,7 +23,7 @@ export default function About() {
             className="md:text-right space-y-6 order-2 md:order-1"
           >
             <p className="text-gray-200 text-xl md:text-2xl font-medium leading-relaxed tracking-tight">
-              I&apos;m a mobile app developer based in Islamabad. 3+ years building production apps — from government-grade enforcement tools to consumer iOS products.
+              I&apos;m a mobile app developer based in Islamabad. 2+ years building production apps — from government-grade enforcement tools to consumer iOS products.
             </p>
             <p className="text-gray-500 text-sm leading-relaxed max-w-sm md:ml-auto">
               I&apos;ve shipped production-ready code across both iOS and Android, building everything from government-grade enforcement tools to complex enterprise platforms.
@@ -95,13 +95,6 @@ export default function About() {
               <span className="w-2 h-2 rounded-full bg-[#97B4D5]" />
               <span className="text-sm font-bold text-gray-300">Flutter Intern</span>
               <span className="text-xs text-gray-500 hidden sm:inline">· Logixsy &apos;23</span>
-            </div>
-
-            {/* TechSol Pill */}
-            <div className="flex items-center gap-3 px-5 py-3 rounded-full border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all cursor-default">
-              <span className="w-2 h-2 rounded-full bg-[#97B4D5]" />
-              <span className="text-sm font-bold text-gray-300">Mobile Dev</span>
-              <span className="text-xs text-gray-500 hidden sm:inline">· Tech Solutions &apos;24</span>
             </div>
 
             {/* NPF Pill (Current) */}

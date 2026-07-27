@@ -29,31 +29,16 @@ export default function Experience() {
       ]
     },
     {
-      id: "techsol",
-      title: "Mobile Developer",
-      company: "Tech Solutions",
-      period: "Dec 2023 — Mar 2024",
-      colSpan: "lg:col-span-5",
-      color: "from-purple-500/20 to-pink-500/5",
-      bullets: [
-        "Built scalable Flutter applications, prioritizing modular architecture",
-        "Integrated Firebase Auth, Firestore, and complex REST APIs",
-        "Implemented robust state management using Riverpod and Provider for 60fps UI",
-        "Collaborated with backend engineers to translate complex business logic"
-      ]
-    },
-    {
       id: "logixsy",
-      title: "Flutter Developer",
+      title: "Flutter Developer Intern",
       company: "Logixsy Tech",
-      period: "Jan 2023 — Oct 2023",
-      colSpan: "lg:col-span-8",
+      period: "Jul 2023 — Sep 2023",
+      colSpan: "lg:col-span-5",
       color: "from-green-500/20 to-emerald-500/5",
       bullets: [
-        "Developed cross-platform mobile applications from scratch adhering to SOLID principles",
-        "Architected secure user authentication flows and local secure storage caching",
-        "Optimized legacy codebases, reducing app bundle sizes significantly",
-        "Participated in Agile workflows, code reviews, and sprint planning"
+        "Contributed to production Flutter apps under senior developer guidance",
+        "Worked with Bloc and Provider for state management",
+        "Assisted with Firebase-backed data flows and debugging"
       ]
     }
   ];

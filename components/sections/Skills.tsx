@@ -10,24 +10,29 @@ import {
 
 const technicalSkills = [
   {
-    title: "Core Mobile",
-    icon: <Smartphone className="w-5 h-5" />,
-    skills: ["Flutter", "Dart", "Swift (iOS)"],
-  },
-  {
-    title: "Frameworks & State",
+    title: "Languages",
     icon: <Code2 className="w-5 h-5" />,
-    skills: ["SwiftUI", "Riverpod", "Bloc", "GetX", "Provider"],
+    skills: ["Swift", "Dart", "JavaScript/TypeScript (familiar)"],
   },
   {
-    title: "Backend & Data",
+    title: "Mobile",
+    icon: <Smartphone className="w-5 h-5" />,
+    skills: ["SwiftUI, SwiftData, UIKit", "WidgetKit, Combine", "Swift Concurrency", "Riverpod, Bloc, GetX", "Provider, Hive"],
+  },
+  {
+    title: "Architecture & Backend",
     icon: <Layers className="w-5 h-5" />,
-    skills: ["Firebase", "Supabase", "SwiftData", "Hive", "REST APIs"],
+    skills: ["Clean Architecture, MVVM", "offline-first sync", "Supabase (Auth/RLS/Postgres)", "Firebase", "REST APIs"],
   },
   {
-    title: "Architecture & Ops",
+    title: "DevOps",
     icon: <ShieldCheck className="w-5 h-5" />,
-    skills: ["Clean Architecture", "CI/CD", "Git", "GitHub Actions"],
+    skills: ["Fastlane", "GitHub Actions", "Shorebird", "App Store Connect", "TestFlight, Play Console"],
+  },
+  {
+    title: "Other",
+    icon: <Code2 className="w-5 h-5" />,
+    skills: ["Git", "ML Kit OCR", "Google Maps SDK", "Stripe/PayPal"],
   }
 ];
 
@@ -53,7 +58,7 @@ export default function Skills() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
           >
             {technicalSkills.map((category, idx) => (
               <div

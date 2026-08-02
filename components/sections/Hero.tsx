@@ -16,7 +16,7 @@ const bootSequence = [
   { type: "link", text: "📱 Niyyah (iOS)", action: "niyyah" },
   { type: "link", text: "📱 Mizan (Flutter)", action: "mizan" },
   { type: "cmd", text: "$ skills --core" },
-  { type: "pills", skills: ["Flutter", "Dart", "Swift", "SwiftUI", "Firebase", "Supabase", "Riverpod", "Bloc"] },
+  { type: "pills", skills: ["Flutter", "Dart", "Swift", "SwiftUI", "Firebase", "Supabase", "Riverpod", "Bloc", "GetX", "Fastlane", "Shorebird"] },
 ];
 
 const storeLinks: Record<string, { url: string; label: string }> = {
@@ -150,10 +150,10 @@ export default function Hero() {
                 Ehsan<br />Yaqoob
               </h1>
               <h2 className="text-base md:text-lg text-gray-400 font-medium tracking-wide">
-                Mobile App Developer · Flutter &amp; iOS
+                Mobile Developer (iOS / Flutter)
               </h2>
               <p className="text-sm text-gray-500 leading-relaxed max-w-sm mx-auto lg:mx-0">
-                2+ years shipping production apps - from a government enforcement system to consumer iOS products.
+                2+ years shipping production apps across Flutter and native iOS - from a government enforcement system to solo-built consumer apps.
               </p>
               <div className="flex flex-col sm:flex-row items-center lg:items-start gap-3 pt-2">
                 <a

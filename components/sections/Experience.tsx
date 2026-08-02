@@ -16,16 +16,18 @@ export default function Experience() {
   const experience = [
     {
       id: "npf",
-      title: "Flutter & iOS Developer",
+      title: "Mobile Developer (iOS & Flutter)",
       company: "National Police Foundation",
       period: "Apr 2024 — Present",
       colSpan: "lg:col-span-7",
       color: "from-blue-500/20 to-cyan-500/5",
       bullets: [
-        "Built and deployed Digital Sergeant E-Challan system to 500+ Islamabad Traffic Police officers",
-        "Implemented ML Kit OCR for real-time, low-latency license plate scanning",
-        "Architected an offline-first data layer with background REST API synchronization",
-        "Maintained Bloc state management and Clean Architecture for enterprise-grade scalability"
+        "Build and maintain the Digital Sergeant E-Challan system, deployed to 500+ ITP officers in production.",
+        "Integrate ML Kit OCR for real-time license plate scanning and REST APIs for live violation reporting and data sync.",
+        "Cut OTA update resolution time from 5 minutes to 20–40 seconds by optimizing the Shorebird intranet auto-update pipeline.",
+        "Maintain CI/CD pipeline using GitHub Actions and Fastlane for automated builds and releases.",
+        "Independently built two fintech-style SPA websites (Next.js) for NPF, including Stripe/PayPal checkout UI integration, plus an internal event platform for the agricultural department.",
+        "Developing a cross-platform (iOS/Android) wallet app for fintech-style transactions, currently in staging."
       ]
     },
     {
@@ -36,9 +38,9 @@ export default function Experience() {
       colSpan: "lg:col-span-5",
       color: "from-green-500/20 to-emerald-500/5",
       bullets: [
-        "Contributed to production Flutter apps under senior developer guidance",
-        "Worked with Bloc and Provider for state management",
-        "Assisted with Firebase-backed data flows and debugging"
+        "Contributed to production Flutter apps under senior developer guidance, working with Bloc, Provider for state management.",
+        "Built and debugged Firebase-backed data flows, resolving rendering and performance issues.",
+        "Wrote tests and handled Play Store deployment for apps built during the internship."
       ]
     }
   ];

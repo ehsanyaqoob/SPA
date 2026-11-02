@@ -1,158 +1,141 @@
 "use client";
 
-import { Menu, X, Home, User, Briefcase, Mail, Code2, Layers, Terminal as TerminalIcon } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useScroll, motion, AnimatePresence } from "framer-motion";
-import TerminalOverlay from "./TerminalOverlay";
+import { useCallback, useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Code2, Home, Layers, Mail, Menu, Terminal, User, X } from "lucide-react";
+import TerminalOverlay from "@/components/TerminalOverlay";
+import { person, sections } from "@/site.config";
 
-const navItems = [
-  { id: "01", name: "Home", href: "#home", icon: <Home className="w-4 h-4" /> },
-  { id: "02", name: "About", href: "#about", icon: <User className="w-4 h-4" /> },
-  { id: "03", name: "Skills", href: "#skills", icon: <Layers className="w-4 h-4" /> },
-  { id: "04", name: "Projects", href: "#projects", icon: <Code2 className="w-4 h-4" /> },
-  { id: "05", name: "Experience", href: "#experience", icon: <Briefcase className="w-4 h-4" /> },
-  { id: "06", name: "Contact", href: "#contact", icon: <Mail className="w-4 h-4" /> },
-];
+const navIcons: Record<string, React.ReactNode> = {
+  home: <Home className="h-4 w-4" />,
+  about: <User className="h-4 w-4" />,
+  projects: <Code2 className="h-4 w-4" />,
+  skills: <Layers className="h-4 w-4" />,
+  contact: <Mail className="h-4 w-4" />,
+};
+
+const navItems = Object.values(sections);
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState<string>(sections.home.id);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
+  const closeTerminal = useCallback(() => setIsTerminalOpen(false), []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    if (pathname !== "/") {
+      setActiveSection(sections.projects.id);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    navItems.forEach(({ id }) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+    return () => observer.disconnect();
+  }, [pathname]);
 
-      const sections = navItems.map((item) => item.href.substring(1));
-      const current = sections.find((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
+  useEffect(() => {
+    const handleShortcut = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setIsTerminalOpen((isOpen) => !isOpen);
+      }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("keydown", handleShortcut);
+    return () => window.removeEventListener("keydown", handleShortcut);
   }, []);
 
-  const handleClick = (href: string) => {
-    setIsOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = el.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
   return (
-    <div className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", damping: 20, stiffness: 100 }}
-        className={`flex items-center gap-1.5 p-1.5 px-2 md:px-3 rounded-2xl md:rounded-full border border-white/10 bg-black/40 backdrop-blur-xl shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] transition-all pointer-events-auto`}
-      >
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1">
-          {navItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleClick(item.href);
-              }}
-              className={`relative flex items-center gap-2 px-4 py-2 rounded-full text-[13px] font-bold tracking-tight transition-all duration-300 ${
-                activeSection === item.href.substring(1)
-                  ? "text-white bg-white/10 shadow-[0_0_20px_rgba(255,255,255,0.05)]"
-                  : "text-gray-500 hover:text-gray-300"
-              }`}
+    <>
+      <div className="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4 md:top-6">
+        <nav className="pointer-events-auto relative w-full rounded-3xl border border-white/10 bg-black/60 p-1.5 shadow-[0_0_50px_-12px_rgba(0,0,0,0.5)] backdrop-blur-xl md:w-auto md:rounded-full">
+          {/* Desktop and tablet */}
+          <div className="hidden items-center gap-1 md:flex">
+            {navItems.map(({ id, nav }) => {
+              const isActive = activeSection === id;
+              return (
+                <Link
+                  key={id}
+                  href={`/#${id}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors lg:px-5 lg:text-base ${
+                    isActive ? "bg-white/10 text-white" : "text-gray-500 hover:text-gray-300"
+                  }`}
+                >
+                  {isActive && <span className="text-blue-500">{navIcons[id]}</span>}
+                  {nav}
+                </Link>
+              );
+            })}
+            <span className="mx-1 h-6 w-px bg-white/10" aria-hidden="true" />
+            <button
+              type="button"
+              onClick={() => setIsTerminalOpen(true)}
+              aria-label="Open terminal"
+              title="Open terminal (⌘K)"
+              className="rounded-full p-2.5 text-gray-400 transition-colors hover:bg-white/10 hover:text-green-400"
             >
-              {activeSection === item.href.substring(1) && (
-                 <span className="text-[#023E8A]">{item.icon}</span>
-              )}
-              {item.name}
-            </a>
-          ))}
-          <div className="w-px h-5 bg-white/10 mx-2" />
-          <button
-            onClick={() => setIsTerminalOpen(true)}
-            className="p-2 rounded-full text-gray-500 hover:text-green-400 hover:bg-white/10 transition-colors"
-            aria-label="Open Terminal"
-          >
-            <TerminalIcon className="w-4 h-4" />
-          </button>
-        </div>
+              <Terminal className="h-4 w-4" />
+            </button>
+          </div>
 
-        {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center justify-between w-[240px] px-2">
-            <span className="text-white text-xs font-black uppercase tracking-widest bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">EY Portfolio</span>
+          {/* Phone */}
+          <div className="flex items-center justify-between pl-3 md:hidden">
+            <Link href="/" className="text-sm font-semibold text-white">
+              {person.name}
+            </Link>
             <div className="flex items-center gap-1">
-                <button
-                    onClick={() => setIsTerminalOpen(true)}
-                    className="p-2 rounded-full text-green-500/80 hover:text-green-400 transition-colors"
-                >
-                    <TerminalIcon className="w-4 h-4" />
-                </button>
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="p-2 rounded-full text-white/50 hover:text-white transition-colors"
-                >
-                    {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                </button>
+              <button
+                type="button"
+                onClick={() => setIsTerminalOpen(true)}
+                aria-label="Open terminal"
+                className="rounded-full p-2.5 text-gray-400 hover:text-green-400"
+              >
+                <Terminal className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+                className="rounded-full p-2.5 text-white"
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
             </div>
-        </div>
+          </div>
 
-        {/* Mobile Menu */}
-        <AnimatePresence>
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95, y: -20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                    className="absolute top-16 left-0 right-0 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 md:hidden shadow-2xl"
+          {isMenuOpen && (
+            <div className="grid gap-1 px-1 pb-1 pt-2 md:hidden">
+              {navItems.map(({ id, nav }) => (
+                <Link
+                  key={id}
+                  href={`/#${id}`}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold ${
+                    activeSection === id ? "bg-white/10 text-white" : "text-gray-400"
+                  }`}
                 >
-                    <div className="grid grid-cols-2 gap-4">
-                        {navItems.map((item) => (
-                            <a
-                                key={item.name}
-                                href={item.href}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleClick(item.href);
-                                }}
-                                className={`flex flex-col items-center gap-2 p-4 rounded-2xl border transition-all ${
-                                    activeSection === item.href.substring(1)
-                                        ? "bg-white/10 border-white/20 text-white"
-                                        : "bg-white/5 border-transparent text-gray-500"
-                                }`}
-                            >
-                                <div className={activeSection === item.href.substring(1) ? "text-[#023E8A]" : "text-gray-600"}>
-                                    {item.icon}
-                                </div>
-                                <span className="text-[11px] font-bold uppercase tracking-widest">{item.name}</span>
-                            </a>
-                        ))}
-                    </div>
-                </motion.div>
-            )}
-        </AnimatePresence>
-      </motion.nav>
-      <TerminalOverlay isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />
-    </div>
+                  <span className={activeSection === id ? "text-blue-500" : ""}>{navIcons[id]}</span>
+                  {nav}
+                </Link>
+              ))}
+            </div>
+          )}
+        </nav>
+      </div>
+
+      {isTerminalOpen && <TerminalOverlay onClose={closeTerminal} />}
+    </>
   );
 }

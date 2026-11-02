@@ -1,61 +1,41 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { Toaster } from "@/components/ui/toaster";
+import { Caveat, Fraunces, Instrument_Sans } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { NexusBackground } from "@/components/NexusBackground";
+import { contact, person, seo } from "@/site.config";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const display = Fraunces({ subsets: ["latin"], display: "swap", variable: "--font-display" });
+const sans = Instrument_Sans({ subsets: ["latin"], display: "swap", variable: "--font-sans" });
+const hand = Caveat({ subsets: ["latin"], display: "swap", variable: "--font-hand" });
 
 export const metadata: Metadata = {
-  title: "Ehsan Yaqoob | App Developer",
-  description:
-    "Ehsan Yaqoob — Flutter and Mobile App Developer skilled in building scalable Android and iOS apps with clean architecture, intuitive UI/UX, and seamless performance.",
-icons: {
-    icon: '/spaicon.png',
-    shortcut: '/spaicon.png',
-    apple: '/spaicon.png',
-  },
-  keywords: [
-    "Flutter Developer",
-    "Mobile App Developer",
-    "Android Developer",
-    "iOS Developer",
-    "Cross Platform Developer",
-    "UI/UX Designer",
-    "Ehsan Yaqoob Portfolio",
-  ],
-  authors: [{ name: "Ehsan Yaqoob", url: "https://github.com/ehsanyaqoob" }],
-  creator: "Ehsan Yaqoob",
-  publisher: "Ehsan Yaqoob",
+  metadataBase: new URL(seo.url),
+  title: seo.title,
+  description: seo.description,
+  icons: { icon: seo.favicon, shortcut: seo.favicon, apple: seo.favicon },
+  keywords: seo.keywords,
+  authors: [{ name: person.name, url: contact.github }],
+  creator: person.name,
+  publisher: person.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ehsanyaqoob.com",
-    title: "Ehsan Yaqoob | Flutter & Mobile App Developer",
-    description:
-      "Portfolio of Ehsan Yaqoob — building modern, high-performance Flutter apps for Android and iOS platforms.",
-    siteName: "Ehsan Yaqoob Portfolio",
-    images: [
-      {
-        url: "https://ehsanyaqoob.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Ehsan Yaqoob Portfolio Preview",
-      },
-    ],
+    url: seo.url,
+    title: seo.title,
+    description: seo.description,
+    siteName: person.name,
+    images: [{ url: seo.ogImage, alt: person.name }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Ehsan Yaqoob | Flutter & Mobile App Developer",
-    description:
-      "Flutter & Mobile App Developer specializing in Android, iOS, and cross-platform app development with a focus on performance and design.",
-    creator: "@ehsanyaqoob",
-    images: ["https://ehsanyaqoob.com/og-image.jpg"],
+    card: "summary",
+    title: seo.title,
+    description: seo.description,
+    creator: seo.twitter,
+    images: [seo.ogImage],
   },
-  metadataBase: new URL("https://ehsanyaqoob.com"),
 };
-
-import { NexusBackground } from "@/components/ui/NexusBackground";
 
 export default function RootLayout({
   children,
@@ -63,23 +43,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Favicon ager change karna hy tu src mein osi file ka name do jo pulic mein parha hy */}
-        <link rel="icon" href="/spaicon.png" type="image/jpeg" />
-        <link rel="shortcut icon" href="/spaicon.png" type="image/jpeg" />
-      </head>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          <NexusBackground />
-          {children}
-          <Toaster />
-        </ThemeProvider>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${hand.variable}`}>
+      <body>
+        <NexusBackground />
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

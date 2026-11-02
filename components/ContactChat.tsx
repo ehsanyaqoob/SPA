@@ -63,12 +63,7 @@ export default function ContactChat() {
         </div>
         <div className="min-w-0">
           <p className="font-semibold">{person.firstName}</p>
-          {availability.open && (
-            <p className="flex items-center gap-1.5 text-sm text-muted">
-              <span className="h-2 w-2 rounded-full bg-green-500" aria-hidden="true" />
-              {availability.label}
-            </p>
-          )}
+          <p className="text-sm text-muted">{person.location}</p>
         </div>
       </div>
 

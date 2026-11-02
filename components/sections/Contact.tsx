@@ -1,9 +1,9 @@
-import { Github, Linkedin, MapPin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { SiX } from "react-icons/si";
 import ContactChat from "@/components/ContactChat";
 import ResumeMenu from "@/components/ResumeMenu";
 import { SketchArrow, SketchOval } from "@/components/Sketch";
-import { contact, contactSection, person, sections } from "@/site.config";
+import { contact, contactSection, sections } from "@/site.config";
 
 const socials = [
   { name: "LinkedIn", href: contact.linkedin, Icon: Linkedin },
@@ -38,10 +38,6 @@ export default function Contact() {
               </a>
             ))}
           </div>
-          <p className="mt-7 flex items-center gap-2 text-muted">
-            <MapPin className="h-4 w-4" />
-            {person.location}
-          </p>
           <p className="mt-8 flex items-center gap-2 font-hand text-3xl text-blue-400">
             {contactSection.formNote}
             <SketchArrow className="h-10 w-16 rotate-[70deg] lg:rotate-0" />

@@ -14,8 +14,9 @@ export default function About() {
         <SketchWave className="-bottom-3 h-3" />
       </SectionHeading>
 
-      <h3 className="mt-12 bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text font-display text-3xl font-semibold tracking-tight text-transparent md:text-5xl">
-        {about.headline}
+      <h3 className="mt-12 font-display text-3xl tracking-tight md:text-5xl">
+        <span className="font-semibold">{about.headline}</span>{" "}
+        <span className="whitespace-nowrap font-light text-gray-400">{about.paths}</span>
       </h3>
       <div className="mt-6 max-w-4xl space-y-5">
         {about.paragraphs.map((paragraph) => (
@@ -41,6 +42,7 @@ export default function About() {
                     <p className="text-sm font-semibold">{item.date}</p>
                     <h4 className="mt-1 text-xl font-semibold text-ink">{item.title}</h4>
                     <p className="mt-1 text-gray-400">{item.place}</p>
+                    <p className="mt-2 font-hand text-2xl leading-tight">{item.note}</p>
                   </article>
                 ))}
               </div>

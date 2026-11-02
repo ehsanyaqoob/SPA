@@ -14,7 +14,9 @@
  * RULES
  *   - Positioning: native iOS first, Flutter second. Say "iOS & Flutter" in that order.
  *   - Never hardcode a name, role, email, URL, skill, or heading in a component. Add it here.
- *   - One fact, one place. Derive repeated text from existing values.
+ *   - One fact, one place, on the page too: a card, its case study, and the sections around it
+ *     must not say the same thing twice. Derive repeated text from existing values.
+ *   - Voice: mature and dry. A little sarcasm is welcome in notes, never in the facts.
  *   - Only claim what can be verified: a store link, a number, a named system.
  *     Do not show install counts or stat rows.
  *   - The only styling value here is each project's brand color. Everything else belongs in components.
@@ -128,36 +130,41 @@ export const sections = {
 };
 
 export const about = {
-  headline: "iOS & Flutter Developer",
+  headline: "Mobile Developer",
+  paths: "./iOS ./Flutter",
   paragraphs: [
-    "I'm a mobile developer with 3+ years of production experience. I build natively in Swift and SwiftUI, and use Flutter when a product needs both platforms, with a focus on offline-first sync and clean architecture.",
-    "I built and shipped Tally, Niyyah, and Mizan on my own, from first design to App Review. At the National Police Foundation, I'm the sole mobile developer on Digital Sergeant, used daily by 500+ Islamabad Traffic Police officers.",
+    "I'm an iOS-focused mobile developer with 3+ years of production experience, and I've worked in Flutter since 2023. Whether I'm working solo or on a team, I stay with a product from first design through App Review and the updates after launch.",
+    "My own apps started with everyday problems, like tracking prayers and working out freelance taxes. Right now I'm going deeper on SwiftUI and SwiftData, and moving toward full-stack iOS development.",
   ],
 };
 
 export const education = [
   {
     title: "B.S. in Computer Science",
-    place: "PMAS Arid Agriculture University, Islamabad",
+    place: "PMAS Arid Agriculture University",
     date: "2021 – 2025",
+    note: "Four years of theory. Production explained the rest.",
   },
   {
     title: "Certifications",
     place: "Flutter, Supabase Database & Auth, iOS App Development (ongoing)",
     date: "2023 – 2026",
+    note: "Proof I read the docs. Shipping is the better proof.",
   },
 ];
 
 export const experience = [
   {
     title: "Mobile Developer (iOS & Flutter)",
-    place: "National Police Foundation, Islamabad",
+    place: "National Police Foundation",
     date: "Apr 2024 – Present",
+    note: "My users carry badges, so bug reports get taken seriously.",
   },
   {
     title: "Flutter Developer Intern",
-    place: "Logixsy Tech, Islamabad",
+    place: "Logixsy Tech",
     date: "Jul 2023 – Sep 2023",
+    note: "Where I learned \"works on my machine\" doesn't ship.",
   },
 ];
 
@@ -231,11 +238,10 @@ export const projects: Project[] = [
     timeline: "2026",
     problem: "Expense trackers ask you to open an app every time you spend, so most expenses never get logged.",
     solution:
-      "Tap the phone twice, answer three quick questions, and the expense is saved through a custom Shortcut and a LiveActivityIntent.",
+      "A custom Shortcut and a LiveActivityIntent do the logging, so recording an expense takes three quick answers.",
     architecture:
       "The app, widget, and Live Activity share one SwiftData store through an App Group, with a code-based light and dark design system shared across targets.",
     keyFeatures: [
-      "Back Tap logging with no app launch",
       "Live Activity and home screen widget",
       "Monthly spending chart and calendar view",
       "Multi-currency support",
@@ -260,18 +266,17 @@ export const projects: Project[] = [
     problem:
       "Existing prayer tracking apps were cluttered, ad-heavy, and lacked a modern, premium iOS-native feel.",
     solution:
-      "A native Salah tracker with GPS-based prayer times, streak tracking, a monthly heatmap, a WidgetKit home screen widget, and local notifications.",
+      "A focused Salah tracker built natively for iPhone, designed to feel at home on the platform.",
     architecture:
       "Offline-first with SwiftData, synced through Supabase RLS using a dirty-flag pattern and an enum-driven navigation state machine. Notifications run on a 5-day rolling window with a scenePhase top-up, replacing a fragile midnight reschedule.",
     keyFeatures: [
-      "GPS-based prayer time calculation",
-      "Streaks and a monthly habit heatmap",
-      "Qibla compass with haptic feedback",
+      "Monthly habit heatmap",
+      "Haptic feedback on the compass",
       "WidgetKit home screen widget",
-      "Reliable local notifications",
+      "Prayer reminders that fire on time",
     ],
     impact:
-      "Shipped solo to the App Store, resolving three App Review rejection cycles to reach approval, and still getting regular updates.",
+      "Live on the App Store, built solo, and still getting regular updates.",
     techStack: ["Swift", "SwiftUI", "SwiftData", "Supabase", "CoreLocation"],
     appStoreUrl: "https://apps.apple.com/pk/app/niyyah-daily-prayer-tracker/id6780566802",
     frames: [1, 2, 3, 4, 5, 6].map((n) => `/frames/niyyah-${n}.jpg`),
@@ -283,22 +288,21 @@ export const projects: Project[] = [
     platform: "Flutter",
     status: "Live",
     brand: "#D0785C",
-    note: "live on both stores",
+    note: "because spreadsheets aren't a tax strategy",
     tagline: "A finance ledger for Pakistani freelancers, with PKR/USD conversion and FBR tax calculation.",
     role: "Solo developer",
     timeline: "2026",
     problem:
       "Pakistani freelancers faced unique financial tracking issues: volatile PKR/USD conversion rates and complex local FBR (Federal Board of Revenue) tax brackets.",
     solution:
-      "A single offline-first ledger that handles PKR/USD conversion, FBR tax brackets, and PDF export, then syncs to Supabase.",
+      "One offline-first ledger that keeps income, tax, and invoices together, then syncs to Supabase.",
     architecture:
       "Structured using Flutter Clean Architecture, with Hive for encrypted, high-performance local storage.",
     keyFeatures: [
-      "Live and cached PKR/USD currency conversion",
-      "Automated FBR tax bracket calculations",
-      "On-device PDF invoice generation",
+      "Live and cached exchange rates",
+      "On-device PDF invoices",
       "Encrypted local Hive database",
-      "Biometric app locking",
+      "Biometric app lock",
     ],
     impact: "Designed, built, and shipped solo to both the App Store and Play Store.",
     techStack: ["Flutter", "Riverpod", "Hive", "Supabase"],
@@ -313,16 +317,16 @@ export const projects: Project[] = [
     platform: "Flutter",
     status: "In production",
     brand: "#2F6FDE",
-    note: "used daily by 500+ officers",
+    note: "paper challans, retired",
     tagline: "The E-Challan system in production with 500+ Islamabad Traffic Police officers.",
     role: "Sole mobile developer",
     timeline: "2024 – Present",
     problem:
       "Traffic officers issued challans entirely on paper: a slow, error-prone process with no real-time database lookup.",
     solution:
-      "A production Flutter app with ML Kit OCR for instant license plate scanning, live violation reporting, and offline-first handling for poor connectivity.",
+      "A production Flutter app that replaces the paperwork with live scanning and reporting, and keeps working on poor connections.",
     architecture:
-      "Built on Clean Architecture, separating presentation, domain, and data layers. Over-the-air updates run through an optimized Shorebird pipeline, cut from 5 minutes to 20–40 seconds.",
+      "Built on Clean Architecture, separating presentation, domain, and data layers.",
     keyFeatures: [
       "On-device OCR for license plate scanning",
       "Real-time sync through REST APIs and Firebase",
@@ -330,7 +334,7 @@ export const projects: Project[] = [
       "GPS-tagged violation tracking",
       "Role-based access control for officers",
     ],
-    impact: "Deployed and actively maintained in live production for 500+ Islamabad Traffic Police officers.",
+    impact: "Sole mobile developer, with over-the-air updates cut from 5 minutes to 20–40 seconds.",
     techStack: ["Flutter", "GetX", "ML Kit OCR", "Firebase", "REST APIs"],
     frames: [2, 1, 3, 4, 5].map((n) => `/frames/dsa-${n}.jpg`),
     frameHeight: 1240,
@@ -341,7 +345,7 @@ export const projects: Project[] = [
     platform: "Flutter",
     status: "In development",
     brand: "#E5393A",
-    note: "in the works right now",
+    note: "double bookings, not for much longer",
     tagline: "A real-time court booking platform for padel clubs and players.",
     role: "Mobile Developer",
     timeline: "Dec 2025 – Present",
@@ -350,7 +354,6 @@ export const projects: Project[] = [
       "The Flutter client plus a Next.js admin dashboard with owner and admin portals, integrated with a Laravel backend alongside a backend engineer.",
     architecture: "The backend API powers real-time state sync, resolving race conditions for court booking.",
     keyFeatures: [
-      "Real-time court booking",
       "Slot availability tracking",
       "In-app payments",
       "Google Maps-based court discovery",

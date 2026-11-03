@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Code2, Home, Layers, Mail, Menu, Terminal, User, X } from "lucide-react";
+import { Code2, Home, Layers, Mail, Menu, Route, Terminal, User, X } from "lucide-react";
 import TerminalOverlay from "@/components/TerminalOverlay";
 import { person, sections } from "@/site.config";
 
@@ -12,6 +12,7 @@ const navIcons: Record<string, React.ReactNode> = {
   about: <User className="h-4 w-4" />,
   projects: <Code2 className="h-4 w-4" />,
   skills: <Layers className="h-4 w-4" />,
+  process: <Route className="h-4 w-4" />,
   contact: <Mail className="h-4 w-4" />,
 };
 

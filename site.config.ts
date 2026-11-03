@@ -9,6 +9,7 @@
  *   Who are you?          -> person, hero, about
  *   What have you built?  -> projects
  *   What do you use?      -> platformSkills, sharedSkills
+ *   How would we work?    -> processSection
  *   How can I hire you?   -> availability, contact, contactSection, resumes
  *
  * RULES
@@ -28,15 +29,16 @@
  *   - Fraunces for headings, Instrument Sans for text, Caveat for short handwritten notes.
  *   - Hand-drawn marks (components/Sketch.tsx) are the signature. Give each section its own gesture:
  *     never repeat one line across the site.
- *   - Navigation is a floating pill. Order: Home, About, Projects, Skills, Contact.
- *   - Contact is an iMessage-style conversation with a real form, delivered by Web3Forms.
+ *   - Navigation is a floating pill. Order: Home, About, Projects, Skills, Process, Contact.
+ *   - Contact is one tactile button that opens the project form, delivered by Web3Forms.
  *
  * WHERE TO CHANGE THINGS
  *   Title, years of experience, location  -> person
  *   Hero text                             -> hero
  *   Open or closed to work                -> availability.open
  *   Email, GitHub, LinkedIn, X            -> contact
- *   Contact text and form key             -> contactSection, availability.pitch
+ *   Contact text, form options, form key  -> contactSection
+ *   How a project runs, common questions  -> processSection
  *   New resume                            -> replace the PDF in public/, update resumes
  *   SEO and link previews                 -> seo
  *   Section titles and navigation         -> sections
@@ -55,7 +57,7 @@ export const person = {
   role: "Mobile Developer (iOS & Flutter)",
   location: "Islamabad, Pakistan",
   photo: "/me.jpg",
-  summary: "3+ years shipping production apps across native iOS and Flutter.",
+  summary: "Shipping production apps since 2023, across native iOS and Flutter.",
 };
 
 export const hero = {
@@ -69,7 +71,6 @@ export const hero = {
 export const availability = {
   open: true,
   label: "Available for new projects",
-  pitch: "Yes. I'm open to full-time roles and freelance projects.",
 };
 
 export const contact = {
@@ -83,18 +84,33 @@ export const contact = {
 export const contactSection = {
   headlineLight: "Got an app",
   headlineBold: "to build?",
-  formNote: "just type here",
-  question: "Hey Ehsan, are you available?",
-  prompt: "Tell me what you're building.",
-  emailSubject: "New message from your portfolio",
-  emailPlaceholder: "Your email",
-  messagePlaceholder: "Your message",
-  sendLabel: "Send message",
-  confirmation: "Got it, thanks! I'll reply to your email soon.",
-  failure: "That didn't send. Please email me directly below.",
+  lead: "Tell me what it is, and I'll tell you honestly whether I'm the right person for it.",
+  startAction: "Start a project",
+  startNote: "takes about a minute",
+  formNote: "let's hear it",
+  formTitle: "What are you building?",
+  formIntro: "A few details help me see the product, the scope, and how soon it needs to exist.",
+  nameLabel: "Name",
+  emailLabel: "Email",
+  messageLabel: "What are you looking to build?",
+  messagePlaceholder: "What it does, who it's for, and what already exists.",
+  timelineLabel: "Expected timeline",
+  timelineOptions: ["Within a month", "1–3 months", "3+ months", "Still exploring"],
+  budgetLabel: "Approximate budget",
+  budgetOptions: ["Under $5K", "$5K–$10K", "$10K–$20K", "$20K+", "Not sure yet"],
+  selectPlaceholder: "Select one",
+  sendLabel: "Continue",
+  closeLabel: "Close",
+  emailSubject: "New project enquiry from your portfolio",
+  sentNote: "got it",
+  sentTitle: "Your response has been submitted.",
+  sentText: "Thanks. I'll read it properly and reply to",
+  mailTitle: "Your mail app should now be open.",
+  mailText: "Your details are filled in there. Press send and it reaches me.",
+  failure: "That didn't send. Please email me directly at",
   directLabel: "Or email me:",
   // Public Web3Forms access key from web3forms.com. While empty, the form opens the visitor's mail app.
-  formKey: "",
+  formKey: "49e1856e-58ec-4763-ac9e-21938a7f9c41",
   formEndpoint: "https://api.web3forms.com/submit",
 };
 
@@ -126,14 +142,73 @@ export const sections = {
   about: { id: "about", nav: "About", title: "About Me", subtitle: "Who I am and where I've been" },
   projects: { id: "projects", nav: "Projects", title: "Projects", subtitle: "Apps I've designed, built, and shipped" },
   skills: { id: "skills", nav: "Skills", title: "Skills", subtitle: "What I use to build and ship" },
+  process: { id: "process", nav: "Process", title: "Process", subtitle: "Four stops, and something real to show at each one" },
   contact: { id: "contact", nav: "Contact" },
+};
+
+export const processSection = {
+  outcomeLabel: "You get",
+  steps: [
+    {
+      note: "first, we talk",
+      title: "Scope it",
+      text: "We pin down who it's for, what version one does, and what it can live without. Most apps improve here, by losing features.",
+      outcome: "A written scope and a quote",
+    },
+    {
+      note: "then, on screen",
+      title: "Design it",
+      text: "You see the main screens in Figma before I write code. Changing a screen is cheap. Changing a shipped app isn't.",
+      outcome: "Screens you can click through",
+    },
+    {
+      note: "then, on your phone",
+      title: "Build it",
+      text: "Native Swift or Flutter, whichever suits the product. You follow progress on your own phone, not through status reports.",
+      outcome: "Test builds as it comes together",
+    },
+    {
+      note: "finally, in the store",
+      title: "Ship it",
+      text: "I handle store submission. App Review rejected one of my apps three times, so I know where it bites.",
+      outcome: "A live app, and the code",
+    },
+  ],
+  questionsTitle: "Still wondering?",
+  questionsNote: "fair enough",
+  questions: [
+    {
+      question: "How long will my app take?",
+      answer: "It depends on the scope, so I'd rather give you a real estimate after we've defined it than a flattering one now.",
+    },
+    {
+      question: "Should it be native iOS or Flutter?",
+      answer: "If it's iPhone-first and leans on widgets, Live Activities, or Shortcuts, native. If you need iOS and Android on one budget, Flutter. I ship both, so I have no reason to push either.",
+    },
+    {
+      question: "Can you start right away?",
+      answer: "Tell me your timeline in the form and you'll get a straight answer on whether I can meet it.",
+    },
+    {
+      question: "Who owns the code?",
+      answer: "You do, once the project is paid for.",
+    },
+    {
+      question: "What happens after launch?",
+      answer: "I can stay on for fixes and updates. We agree what that looks like before launch, so nobody is surprised later.",
+    },
+    {
+      question: "What do you need from me to start?",
+      answer: "A clear idea of who the app is for and what it must do. Rough notes are fine. A polished pitch deck is optional.",
+    },
+  ],
 };
 
 export const about = {
   headline: "Mobile Developer",
   paths: "./iOS ./Flutter",
   paragraphs: [
-    "I'm an iOS-focused mobile developer with 3+ years of production experience, and I've worked in Flutter since 2023. Whether I'm working solo or on a team, I stay with a product from first design through App Review and the updates after launch.",
+    "I'm an iOS-focused mobile developer, shipping production apps since 2023 in Flutter and now natively in Swift. Whether I'm working solo or on a team, I stay with a product from first design through App Review and the updates after launch.",
     "My own apps started with everyday problems, like tracking prayers and working out freelance taxes. Right now I'm going deeper on SwiftUI and SwiftData, and moving toward full-stack iOS development.",
   ],
 };

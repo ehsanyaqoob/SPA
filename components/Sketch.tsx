@@ -147,6 +147,100 @@ export function SketchSparks({ className = "" }: SketchProps) {
   );
 }
 
+// An underline with a single loop in the middle.
+export function SketchLoop({ className = "" }: SketchProps) {
+  return (
+    <Stretched
+      viewBox="0 0 200 24"
+      className={`left-0 w-full ${className}`}
+      strokeWidth={2.5}
+      paths={["M2 14 C 40 10, 76 10, 108 14 C 128 17, 126 3, 110 4 C 94 6, 96 21, 122 19 C 150 17, 176 13, 198 12"]}
+    />
+  );
+}
+
+// The road through the process steps. It stretches across the row of stops.
+export function SketchRoute({ className = "" }: SketchProps) {
+  return (
+    <Stretched
+      viewBox="0 0 1000 150"
+      className={className}
+      strokeWidth={2.5}
+      paths={["M30 36 C 100 8, 190 124, 280 92 C 350 66, 440 2, 530 36 C 600 64, 690 126, 780 92 C 850 66, 930 40, 996 58"]}
+    />
+  );
+}
+
+function Doodle({ className, children }: SketchProps & { children: React.ReactNode }) {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      {children}
+    </svg>
+  );
+}
+
+// Two overlapping speech bubbles.
+export function SketchTalk({ className = "" }: SketchProps) {
+  return (
+    <Doodle className={className}>
+      <path d="M10 13 C 20 10, 34 10, 42 12 C 45 19, 45 27, 42 33 C 34 35, 25 35, 18 34 L 9 42 L 11 33 C 7 26, 7 19, 10 13 Z" />
+      <path d="M48 24 C 53 25, 57 26, 57 27 C 59 33, 59 40, 56 45 L 58 53 L 49 47 C 42 48, 35 47, 30 44" />
+      <path d="M17 21 L 35 20" />
+      <path d="M17 27 L 28 27" />
+    </Doodle>
+  );
+}
+
+// A rough wireframe of two screens.
+export function SketchScreens({ className = "" }: SketchProps) {
+  return (
+    <Doodle className={className}>
+      <path d="M8 10 C 15 9, 23 9, 29 10 C 30 24, 30 40, 29 54 C 22 55, 15 55, 9 54 C 7 40, 7 24, 8 10 Z" />
+      <path d="M12 17 L 25 17 L 25 29 L 12 29 Z" />
+      <path d="M12 36 L 25 35" />
+      <path d="M12 42 L 21 42" />
+      <path d="M36 10 C 43 9, 50 9, 57 10 C 58 24, 58 40, 57 54 C 50 55, 43 55, 37 54 C 35 40, 35 24, 36 10 Z" />
+      <path d="M40 18 L 53 18" />
+      <path d="M40 25 L 53 25" />
+      <path d="M40 32 L 49 32" />
+      <path d="M41 46 C 45 44, 50 44, 53 46" />
+    </Doodle>
+  );
+}
+
+// A phone with a tick on the screen.
+export function SketchPhone({ className = "" }: SketchProps) {
+  return (
+    <Doodle className={className}>
+      <path d="M19 6 C 27 5, 37 5, 45 6 C 48 7, 48 9, 48 12 C 49 26, 49 40, 48 53 C 47 57, 46 58, 43 58 C 35 59, 27 59, 20 58 C 17 58, 16 56, 16 53 C 15 39, 15 25, 16 11 C 16 8, 17 7, 19 6 Z" />
+      <path d="M27 11 L 37 11" />
+      <path d="M24 33 L 30 40 L 41 25" />
+      <path d="M28 52 L 36 52" />
+    </Doodle>
+  );
+}
+
+// A paper plane leaving, with its trail behind it.
+export function SketchStore({ className = "" }: SketchProps) {
+  return (
+    <Doodle className={className}>
+      <path d="M57 8 L 9 27 L 25 35 L 34 52 Z" />
+      <path d="M57 8 L 25 35" />
+      <path d="M6 44 C 10 42, 13 42, 16 44" />
+      <path d="M8 55 C 13 52, 18 52, 23 56" />
+    </Doodle>
+  );
+}
+
 // Hand-drawn brackets on two opposite corners of a positioned parent.
 export function SketchCorners({ className = "" }: SketchProps) {
   const corner = "M3 44 C 2 28, 3 14, 6 6 C 16 3, 30 2, 46 3";

@@ -17,7 +17,7 @@ There is no test framework or test script. Verify changes with `typecheck`, `lin
 
 ## Architecture
 
-Personal portfolio for a mobile developer, built with Next.js 13.5 App Router, TypeScript, and Tailwind. Sections render as server components. Only `Navbar`, `TerminalOverlay`, `ResumeMenu`, `ContactChat`, `CopyEmailButton`, and `NexusBackground` are client components, so keep page content out of client components to preserve it in the exported HTML.
+Personal portfolio for a mobile developer, built with Next.js 13.5 App Router, TypeScript, and Tailwind. Sections render as server components. Only `Navbar`, `TerminalOverlay`, `ResumeMenu`, `ProjectForm`, `CopyEmailButton`, and `NexusBackground` are client components, so keep page content out of client components to preserve it in the exported HTML.
 
 ### Static export
 
@@ -51,4 +51,4 @@ Personal portfolio for a mobile developer, built with Next.js 13.5 App Router, T
 
 ### Contact form
 
-The site has no backend, so `components/ContactChat.tsx` posts from the browser to Web3Forms using `contactSection.formKey` in `site.config.ts`. That key is public by design. While it is empty, submitting opens the visitor's mail app instead.
+The site has no backend, so `components/ProjectForm.tsx` (a modal opened from the Contact section) posts from the browser to Web3Forms using `contactSection.formKey` in `site.config.ts`. That key is public by design. While it is empty, submitting opens the visitor's mail app instead.

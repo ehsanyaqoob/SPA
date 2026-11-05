@@ -62,9 +62,7 @@ export const person = {
 
 export const hero = {
   greeting: "Hey, I'm",
-  intro:
-    "I build native iOS apps with Swift and SwiftUI, and cross-platform apps with Flutter. Three are live on the App Store, and one is used by police officers every day.",
-  primaryAction: "See my projects",
+  intro: "I'm a Software Engineer. I build native iOS apps with Swift and SwiftUI, and cross-platform apps with Flutter.",
   photoNote: "that's me",
 };
 

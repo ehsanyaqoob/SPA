@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { ChevronDown, Download } from "lucide-react";
 import { resumeAction, resumes } from "@/site.config";
 
-export default function ResumeMenu({ className }: { className?: string }) {
+/** Pass children (an icon) to replace the text trigger. */
+export default function ResumeMenu({ className, children }: { className?: string; children?: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -31,10 +32,16 @@ export default function ResumeMenu({ className }: { className?: string }) {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="true"
+        aria-label={children ? resumeAction : undefined}
+        title={children ? resumeAction : undefined}
         className={`inline-flex items-center gap-2 ${className}`}
       >
-        {resumeAction}
-        <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+        {children ?? (
+          <>
+            {resumeAction}
+            <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+          </>
+        )}
       </button>
       {isOpen && (
         <div className="absolute left-0 top-full z-30 mt-2 w-56 overflow-hidden rounded-2xl border border-white/10 bg-[#111114] p-1.5 shadow-2xl">

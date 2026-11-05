@@ -1,7 +1,16 @@
 import Image from "next/image";
+import { PiEnvelopeBold, PiFileTextBold, PiLinkedinLogoFill, PiXLogoBold } from "react-icons/pi";
 import ResumeMenu from "@/components/ResumeMenu";
 import { SketchArrow, SketchCircle, SketchSparks, SketchSwash } from "@/components/Sketch";
 import { availability, contact, hero, person, sections } from "@/site.config";
+
+const socials = [
+  { name: "LinkedIn", href: contact.linkedin, Icon: PiLinkedinLogoFill },
+  { name: "Email", href: contact.mailto, Icon: PiEnvelopeBold },
+  { name: "X", href: contact.x, Icon: PiXLogoBold },
+];
+
+const iconClass = "block text-accent-text transition-colors hover:text-ink";
 
 export default function Hero() {
   return (
@@ -24,14 +33,23 @@ export default function Hero() {
             {hero.intro}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3 lg:mt-10 lg:gap-4">
-            <a
-              href={`#${sections.projects.id}`}
-              className="rounded-full bg-accent px-7 py-3.5 font-semibold text-white transition-opacity hover:opacity-90 lg:px-8 lg:py-4 lg:text-lg"
-            >
-              {hero.primaryAction}
-            </a>
-            <ResumeMenu className="rounded-full border border-white/25 bg-black/40 px-7 py-3.5 font-semibold transition-colors hover:border-white lg:px-8 lg:py-4 lg:text-lg" />
+          <div className="mt-8 flex items-center gap-8 lg:mt-10 lg:gap-10">
+            <ResumeMenu className={iconClass}>
+              <PiFileTextBold className="h-9 w-9 rotate-6 lg:h-10 lg:w-10" />
+            </ResumeMenu>
+            {socials.map(({ name, href, Icon }) => (
+              <a
+                key={name}
+                href={href}
+                target={href === contact.mailto ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                aria-label={name}
+                title={name}
+                className={iconClass}
+              >
+                <Icon className="h-9 w-9 lg:h-10 lg:w-10" />
+              </a>
+            ))}
           </div>
 
           {availability.open && (
